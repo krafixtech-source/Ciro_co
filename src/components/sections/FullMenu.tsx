@@ -484,7 +484,9 @@ export const FullMenu: React.FC = () => {
                                 {item.name}
                               </h3>
                               {item.isVeg && (
-                                <Leaf className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600/20" title="Vegetarian" />
+                                <span title="Vegetarian">
+                                  <Leaf className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600/20" />
+                                </span>
                               )}
                               {item.isGlutenFree && (
                                 <span className="text-[9px] font-mono border border-ciro-olive/50 text-ciro-olive px-1 rounded-sm tracking-tighter" title="Gluten-Free">GF</span>
