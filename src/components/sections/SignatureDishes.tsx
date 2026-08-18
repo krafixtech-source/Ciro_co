@@ -1,0 +1,133 @@
+import React from 'react';
+
+interface DishCard {
+  id: string;
+  name: string;
+  category: string;
+  desc: string;
+  price: string;
+  imgUrl: string;
+  aspectClass: string;
+  bgColorClass: string;
+  imageSlotId: string;
+}
+
+export const SignatureDishes: React.FC = () => {
+  const dishes: DishCard[] = [
+    {
+      id: 'dish-1',
+      name: 'Truffle Fettuccine Wild Mushroom',
+      category: 'PASTA',
+      desc: 'Hand-rolled fresh fettuccine, white truffle cream, wild mushrooms, and 24-month aged Parmigiano.',
+      price: '₹495',
+      imgUrl: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80',
+      aspectClass: 'aspect-[3/4]',
+      bgColorClass: 'bg-ciro-lime',
+      imageSlotId: 'signatureDish01',
+    },
+    {
+      id: 'dish-2',
+      name: 'Burrata & Parma Sourdough Pizza',
+      category: 'PIZZA',
+      desc: 'Sourdough crust, San Marzano marinara, creamy fresh burrata ball, parma ham, arugula, olive oil.',
+      price: '₹545',
+      imgUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
+      aspectClass: 'aspect-square',
+      bgColorClass: 'bg-ciro-orange',
+      imageSlotId: 'signatureDish02',
+    },
+    {
+      id: 'dish-3',
+      name: 'Birria Beef Soft Tacos',
+      category: 'TACOS',
+      desc: 'Three slow-braised beef tacos on hand-pressed corn tortillas with consome dip, fresh lime, and cilantro.',
+      price: '₹425',
+      imgUrl: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80',
+      aspectClass: 'aspect-[4/3]',
+      bgColorClass: 'bg-ciro-saffron',
+      imageSlotId: 'signatureDish03',
+    },
+    {
+      id: 'dish-4',
+      name: 'Signature Rose Tiramisu',
+      category: 'DESSERTS',
+      desc: 'Layers of espressoladyfingers, velvety mascarpone cream, rose syrup infusion, dusted with cocoa.',
+      price: '₹295',
+      imgUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80',
+      aspectClass: 'aspect-[3/4]',
+      bgColorClass: 'bg-ciro-olive',
+      imageSlotId: 'signatureDish04',
+    },
+  ];
+
+  return (
+    <section
+      className="relative w-full min-h-screen bg-ciro-dark text-ciro-cream py-24 px-6 md:px-12 border-b-3 border-ciro-dark"
+      id="gallery"
+    >
+      <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none" />
+
+      {/* Header */}
+      <div className="max-w-7xl mx-auto w-full mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
+        <div>
+          <span className="font-display font-black text-xs uppercase tracking-[0.25em] text-ciro-lime">
+            CULINARY CURATION
+          </span>
+          <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl uppercase mt-2 text-ciro-cream leading-none">
+            THE GOOD STUFF.
+          </h2>
+        </div>
+        <p className="font-sans font-medium text-lg text-ciro-cream/70 max-w-sm">
+          A visual journey through our kitchen. Fresh, colorful, and prepared with pure culinary excitement daily.
+        </p>
+      </div>
+
+      {/* Irregular Cards Grid */}
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 relative z-10">
+        {dishes.map((dish, i) => (
+          <div
+            key={dish.id}
+            className={`flex flex-col w-full max-w-lg mx-auto ${
+              i % 2 === 1 ? 'md:translate-y-24' : ''
+            }`}
+          >
+            {/* Card Outer */}
+            <div
+              className={`w-full ${dish.bgColorClass} border-3 border-ciro-dark p-3 shadow-retro-lg cursor-pointer transform transition-all duration-300 hover:rotate-[-1deg] hover:translate-y-[-4px] group`}
+              data-cursor="view"
+            >
+              {/* Image Inner with Scale Transition */}
+              <div className={`w-full ${dish.aspectClass} overflow-hidden border-2 border-ciro-dark bg-ciro-dark/20 relative`}>
+                <img
+                  src={dish.imgUrl}
+                  alt={dish.name}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                  id={dish.imageSlotId}
+                />
+                <span className="absolute top-4 left-4 bg-ciro-cream text-ciro-dark border-2 border-ciro-dark px-3 py-1 font-display font-black text-[10px] uppercase tracking-wider">
+                  {dish.category}
+                </span>
+              </div>
+
+              {/* Title & Desc */}
+              <div className="mt-6 text-ciro-dark flex flex-col gap-2">
+                <div className="flex justify-between items-start gap-4">
+                  <h3 className="font-serif italic font-extrabold text-xl md:text-2xl leading-tight group-hover:translate-y-[-6px] transition-transform duration-300">
+                    {dish.name}
+                  </h3>
+                </div>
+                <p className="font-sans font-semibold text-xs leading-relaxed opacity-90 border-t border-ciro-dark/20 pt-2">
+                  {dish.desc}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Spacer matching irregular columns */}
+      <div className="h-24 md:h-48" />
+    </section>
+  );
+};
+export default SignatureDishes;

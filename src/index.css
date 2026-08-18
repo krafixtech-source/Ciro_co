@@ -1,0 +1,138 @@
+/* Import Custom Google Fonts for Ciro */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Plus+Jakarta+Sans:wght@400..800&display=swap');
+
+@import "tailwindcss";
+
+/* Tailwind v4 Custom Theme Configurations */
+@theme {
+  --color-ciro-cream: #FEF7EC;
+  --color-ciro-red: #E6A89B;
+  --color-ciro-orange: #E6B583;
+  --color-ciro-saffron: #F6E2B2;
+  --color-ciro-olive: #819273;
+  --color-ciro-lime: #B8D69A;
+  --color-ciro-espresso: #7D594E;
+  --color-ciro-dark: #171512;
+  --color-ciro-light: #FEF7EC;
+
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-serif: "Fraunces", Georgia, serif;
+
+  --border-width-3: 3px;
+  
+  --shadow-retro: 4px 4px 0px 0px #171512;
+  --shadow-retro-lg: 8px 8px 0px 0px #171512;
+  --shadow-retro-orange: 4px 4px 0px 0px #F28C28;
+  --shadow-retro-red: 4px 4px 0px 0px #D94A32;
+}
+
+/* Base resets and overrides */
+html, body {
+  background-color: var(--color-ciro-cream);
+  color: var(--color-ciro-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom momentum scroll styling (Lenis) */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Selection aesthetics */
+::selection {
+  background-color: var(--color-ciro-lime);
+  color: var(--color-ciro-dark);
+}
+
+/* Film grain effect overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0%25 0%25 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ScrollTrigger pinning wrapper adjustments */
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  will-change: transform;
+}
+
+.horizontal-panel {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Clip-path reveal variables for typography triggers */
+.clip-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  display: block;
+}
+
+.clip-text-inner {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clip-text-inner.revealed {
+  transform: translateY(0%);
+}
+
+/* Custom scrollbar matching espresso / cream colors */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ciro-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ciro-espresso);
+  border: 2px solid var(--color-ciro-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ciro-red);
+}
+
+/* Circular dotted pattern for blank grid blocks */
+.bg-grid-dots {
+  background-image: radial-gradient(var(--color-ciro-espresso) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-dots-light {
+  background-image: radial-gradient(rgba(248, 235, 210, 0.2) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
