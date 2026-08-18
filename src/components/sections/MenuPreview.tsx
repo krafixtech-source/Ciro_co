@@ -24,85 +24,85 @@ export const MenuPreview: React.FC = () => {
     {
       id: 'pasta',
       label: 'PASTA',
-      bgColorClass: 'bg-ciro-olive',
+      bgColorClass: 'bg-[#829375]',
       textColorClass: 'text-ciro-cream',
-      buttonActiveColor: 'bg-ciro-lime text-ciro-dark',
+      buttonActiveColor: 'bg-[#FBF5EB] text-ciro-dark',
       imageUrl: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'italianFood03',
       items: [
-        { name: 'Truffle Fettuccine Wild Mushroom', price: '₹495', desc: 'Fresh hand-rolled pasta, white truffle butter, forest mushroom, aged parmesan.', tag: 'Chef Special' },
-        { name: 'Pesto Alla Genovese Gnocchi', price: '₹425', desc: 'Soft potato gnocchi, fragrant basil pesto, cherry tomatoes, toasted pine nuts, fresh burrata.' },
-        { name: 'Spicy Arrabbiata Penne', price: '₹395', desc: 'Penne pasta tossed in a fiery San Marzano tomato sauce, fresh garlic, bird chili, and parsley.', tag: 'Spicy' }
+        { name: 'CARAMELLE', price: '₹825', desc: 'Four-cheese stuffed candy-shaped pasta tossed in fresh basil pesto sauce.', tag: 'Handmade' },
+        { name: 'SUNFLOWER RAVIOLI', price: '₹825', desc: 'Sundried tomato & cream cheese stuffed ravioli, sage butter emulsion.' },
+        { name: 'SPAGHETTI AGLIO E OLIO PEPPERONCINO', price: '₹749', desc: 'Pecorino Romano, sundried tomato, fresh paprika, EVOO, vegan caviar.' }
       ]
     },
     {
       id: 'pizza',
       label: 'PIZZA',
-      bgColorClass: 'bg-ciro-espresso',
-      textColorClass: 'text-ciro-cream',
-      buttonActiveColor: 'bg-ciro-cream text-ciro-dark',
+      bgColorClass: 'bg-[#FBF5EB]',
+      textColorClass: 'text-ciro-dark',
+      buttonActiveColor: 'bg-[#829375] text-ciro-cream',
       imageUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'italianFood04',
       items: [
-        { name: 'Margherita Verace Sourdough', price: '₹445', desc: '48-hour fermented crust, San Marzano tomatoes, fresh mozzarella, extra virgin olive oil, basil.', tag: 'Classic' },
-        { name: 'Burrata & Parma Sourdough Pizza', price: '₹545', desc: 'Creamy burrata ball, parma ham, organic wild arugula, olive oil drizzle.' },
-        { name: 'Diavola Spicy Pepperoni', price: '₹495', desc: 'Fiery Italian pepperoni salami, spicy spreadable nduja, jalapeño slices.', tag: 'Hot' }
+        { name: 'SUN MARGHERITA', price: '₹749', desc: 'Pomodoro sauce, sundried tomatoes, fresh mozzarella, fresh basil, Pecorino Romano, Parmesan.', tag: 'Classic' },
+        { name: 'SICILIA', price: '₹825', desc: 'Pomodoro Pelati, mushroom, garlic, pickled onions, sun-dried tomato, chilli oil, fresh mozzarella & basil.' },
+        { name: 'TRUFFLE CACIO E PEPE', price: '₹899', desc: 'Mushroom veloute, arugula, truffle oil, crispy mushrooms, fresh black pepper, Pecorino.', tag: 'Gourmet' }
       ]
     },
     {
       id: 'mexican',
       label: 'MEXICAN',
-      bgColorClass: 'bg-ciro-orange',
-      textColorClass: 'text-ciro-dark',
-      buttonActiveColor: 'bg-ciro-dark text-ciro-cream',
+      bgColorClass: 'bg-[#829375]',
+      textColorClass: 'text-ciro-cream',
+      buttonActiveColor: 'bg-[#FBF5EB] text-ciro-dark',
       imageUrl: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'mexicanFood03',
       items: [
-        { name: 'Chipotle Chicken Soft Shell Tacos', price: '₹395', desc: 'Three corn tortillas, pulled chipotle chicken, house salsa, avocado crema, pickled onions.', tag: 'Popular' },
-        { name: 'Three-Cheese Loaded Quesadillas', price: '₹375', desc: 'Flour tortilla stuffed with mozzarella, Monterey Jack, cheddar, sour cream, house guac.' },
-        { name: 'Guac & Chips Platter', price: '₹295', desc: 'Fresh hand-mashed avocado, sea salt, lime, fresh tortilla chips cooked in-house.', tag: 'Fresh' }
+        { name: 'FUNGO AL PASTOR TACOS', price: '₹589', desc: 'Enoki & Shiitake mushrooms, house Al Pastor sauce, crema, Pico de Gallo.' },
+        { name: 'BIRRIA NACHOS', price: '₹545', desc: 'House special Birria, spiced soy mince, cheese sauce, jalapenos & Pico de Gallo.', tag: 'House Special' },
+        { name: 'GARDEN FIESTA ENCHILADAS', price: '₹649', desc: 'Garden fresh veggies wrapped in tortillas, rojo red sauce, melted cheese, sour cream, beans & rice.' }
       ]
     },
     {
       id: 'smallplates',
       label: 'SMALL PLATES',
-      bgColorClass: 'bg-ciro-saffron',
+      bgColorClass: 'bg-[#FBF5EB]',
       textColorClass: 'text-ciro-dark',
-      buttonActiveColor: 'bg-ciro-dark text-ciro-cream',
+      buttonActiveColor: 'bg-[#829375] text-ciro-cream',
       imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'signatureDish05',
       items: [
-        { name: 'Truffle Parmesan Hand-Cut Fries', price: '₹245', desc: 'Double-cooked potato wedges, truffle oil spray, grated parmesan, fresh parsley.' },
-        { name: 'Charred Corn Street Nachos', price: '₹325', desc: 'House tortilla chips, charred sweet corn, spicy jalapeño nacho cheese, black beans, pico.' },
-        { name: 'Garlic Butter Focaccia Slabs', price: '₹225', desc: 'In-house baked fluffy focaccia, roasted garlic butter, rosemary leaves.', tag: 'Baked Daily' }
+        { name: 'TRUFFLE PARMESAN FRIES', price: '₹399', desc: 'Double-cooked fries tossed in white truffle oil and grated pecorino.' },
+        { name: 'NACHOS GRANDE', price: '₹499', desc: 'Homemade tortilla chips, fresh Guacamole, Salsa, Lime Crema & Queso cheese sauce.', tag: 'Loaded' },
+        { name: 'SHIMJI MELT', price: '₹499', desc: 'Mushroom Fricassee, Truffle Oil, Crispy Enoki, Melted Cheese, Sourdough Bread.' }
       ]
     },
     {
       id: 'coffee',
       label: 'COFFEE',
-      bgColorClass: 'bg-ciro-cream',
-      textColorClass: 'text-ciro-dark',
-      buttonActiveColor: 'bg-ciro-olive text-ciro-cream',
+      bgColorClass: 'bg-[#829375]',
+      textColorClass: 'text-ciro-cream',
+      buttonActiveColor: 'bg-[#FBF5EB] text-ciro-dark',
       imageUrl: 'https://images.unsplash.com/photo-1507133750040-4a8f57021571?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'coffee02',
       items: [
-        { name: 'CIROCO Velvet Flat White', price: '₹225', desc: 'Velvety micro-foamed milk folded into single-origin medium roast espresso.', tag: 'Barista Spec' },
-        { name: 'Iced Pour-Over V60', price: '₹195', desc: 'Slow-brewed specialty single-origin roast highlighting clean, crisp acidity.' },
-        { name: 'Spiced Saffron Espresso Latte', price: '₹245', desc: 'Double shot espresso combined with milk, organic honey, and local saffron strands.' }
+        { name: 'CIROCO VELVET FLAT WHITE', price: '₹225', desc: 'Velvety micro-foamed milk folded into single-origin medium roast espresso.', tag: 'Barista Spec' },
+        { name: 'ICED POUR-OVER V60', price: '₹195', desc: 'Slow-brewed specialty single-origin roast highlighting clean, crisp acidity.' },
+        { name: 'SPICED SAFFRON ESPRESSO LATTE', price: '₹245', desc: 'Double shot espresso combined with milk, organic honey, and local saffron strands.' }
       ]
     },
     {
       id: 'dessert',
       label: 'DESSERT',
-      bgColorClass: 'bg-ciro-lime',
+      bgColorClass: 'bg-[#FBF5EB]',
       textColorClass: 'text-ciro-dark',
-      buttonActiveColor: 'bg-ciro-dark text-ciro-cream',
+      buttonActiveColor: 'bg-[#829375] text-ciro-cream',
       imageUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80',
       imageSlotId: 'signatureDish06',
       items: [
-        { name: 'Jaipur Rose & Berry Tart', price: '₹275', desc: 'Sweet pastry shell, rose water cream, wild strawberries, glazed organic berries.', tag: 'Voted Best' },
-        { name: 'Classic Espresso Tiramisu', price: '₹295', desc: 'Whipped mascarpone layers, espresso ladyfingers, rich organic cocoa powder.' },
-        { name: 'Burnt Butter Cinnamon Roll', price: '₹185', desc: 'Flaky rolled sourdough bun, cinnamon sugar glaze, burnt butter icing.' }
+        { name: 'CLASSIC TIRAMISU', price: '₹495', desc: 'Chocolate soil crumbles, airy coffee cloud, creamy mascarpone layers.', tag: 'Signature' },
+        { name: 'MIDNIGHT LECHES', price: '₹445', desc: 'Coffee Espuma, espresso-soaked sponge cake, dusting of rich cacao.' },
+        { name: 'BLUSH BERRY COTTA', price: '₹445', desc: 'Berry coulis, fresh berry salsa served on a silky, cold cream base.' }
       ]
     }
   ];
@@ -115,7 +115,7 @@ export const MenuPreview: React.FC = () => {
       className={`relative w-full min-h-screen py-24 px-6 md:px-12 flex flex-col justify-between border-b-3 border-ciro-dark transition-colors duration-700 ease-in-out ${currentCategory.bgColorClass} ${currentCategory.textColorClass}`}
       id="menu"
     >
-      <div className="absolute inset-0 bg-grid-dots opacity-5 pointer-events-none" />
+      <div className={`absolute inset-0 ${currentCategory.textColorClass === 'text-ciro-cream' ? 'bg-grid-dots-light' : 'bg-grid-dots'} opacity-5 pointer-events-none`} />
 
       {/* Header */}
       <div className="max-w-7xl mx-auto w-full text-center mb-16 relative z-10">
@@ -138,7 +138,7 @@ export const MenuPreview: React.FC = () => {
               <button
                 key={cat.id}
                 onClick={() => setActiveTab(cat.id)}
-                className={`flex-shrink-0 text-left px-6 py-4 font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark shadow-retro transition-all duration-300 ${
+                className={`flex-shrink-0 text-left px-6 py-4 font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark rounded-[16px] transition-all duration-300 ${
                   isActive ? cat.buttonActiveColor : 'bg-ciro-cream text-ciro-dark'
                 }`}
               >
@@ -148,65 +148,63 @@ export const MenuPreview: React.FC = () => {
           })}
         </div>
 
-        {/* Center column: Static Image representation */}
+        {/* Center column: Image Slide */}
         <div className="lg:col-span-4 flex justify-center">
-          <div className="w-full max-w-[280px] aspect-[4/5] bg-ciro-cream border-3 border-ciro-dark shadow-retro-lg p-2 rotate-[2deg] overflow-hidden">
+          <div className="w-full max-w-[340px] relative overflow-hidden">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, rotate: -5 }}
-                animate={{ opacity: 1, rotate: 2 }}
-                exit={{ opacity: 0, rotate: 5 }}
-                transition={{ duration: 0.4 }}
-                className="w-full h-full border border-ciro-dark overflow-hidden bg-ciro-dark/10"
-              >
-                <img
-                  src={currentCategory.imageUrl}
-                  alt={currentCategory.label}
-                  className="w-full h-full object-cover"
-                  id={currentCategory.imageSlotId}
-                />
-              </motion.div>
+              <motion.img
+                key={currentCategory.id}
+                src={currentCategory.imageUrl}
+                alt={currentCategory.label}
+                id={currentCategory.imageSlotId}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                className="w-full h-80 md:h-[450px] object-cover rounded-[32px] border-3 border-ciro-dark"
+              />
             </AnimatePresence>
           </div>
         </div>
 
-        {/* Right column: Menu Items list */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4 }}
-              className="flex flex-col gap-6"
-            >
-              {currentCategory.items.map((item, idx) => (
-                <div key={idx} className="border-b border-current pb-4 flex flex-col gap-1">
-                  <div className="flex justify-between items-start gap-4">
-                    <h3 className="font-serif italic font-extrabold text-xl">
+        {/* Right column: Menu Items List */}
+        <div className="lg:col-span-4 flex flex-col justify-between min-h-[380px]">
+          <div className="flex flex-col gap-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentCategory.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col gap-8"
+              >
+                {currentCategory.items.map((item, idx) => (
+                  <div key={idx} className="border-b border-current/25 pb-6 last:border-0 last:pb-0">
+                    <h3 className="font-serif italic font-extrabold text-lg md:text-xl leading-none">
                       {item.name}
                     </h3>
-                  </div>
-                  <p className="font-sans font-medium text-xs opacity-90 leading-relaxed">
-                    {item.desc}
-                  </p>
-                  {item.tag && (
-                    <div className="mt-2 flex">
-                      <span className="bg-ciro-olive text-ciro-light border border-ciro-dark font-display font-extrabold text-[8px] tracking-widest uppercase px-2 py-0.5">
+                    <p className="mt-2 font-sans font-bold text-xs opacity-80 leading-relaxed">
+                      {item.desc}
+                    </p>
+                    {item.tag && (
+                      <span className="inline-block mt-2 font-display font-black text-[8px] tracking-wider bg-current/10 px-2 py-0.5 uppercase">
                         {item.tag}
                       </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                    )}
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
           <a
             href="#full-menu"
-            className="mt-8 border-3 border-ciro-dark bg-ciro-dark text-ciro-cream text-center font-display font-black text-xs uppercase tracking-widest py-4 shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150"
+            className={`mt-8 border-3 border-ciro-dark text-center font-display font-black text-xs uppercase tracking-widest py-4 rounded-[16px] transition-all duration-300 ${
+              currentCategory.textColorClass === 'text-ciro-cream'
+                ? 'bg-[#FEF7EC] text-ciro-dark hover:bg-ciro-dark hover:text-[#FEF7EC]'
+                : 'bg-[#829375] text-[#FEF7EC] hover:bg-[#FEF7EC] hover:text-[#829375]'
+            }`}
           >
             VIEW FULL MENU →
           </a>
@@ -216,4 +214,5 @@ export const MenuPreview: React.FC = () => {
     </section>
   );
 };
+
 export default MenuPreview;

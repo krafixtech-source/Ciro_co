@@ -44,7 +44,7 @@ export const Jaipur: React.FC = () => {
               href="https://maps.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-ciro-olive text-ciro-light border-2 border-ciro-dark px-6 py-3 font-display font-extrabold text-xs uppercase tracking-widest shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150"
+              className="bg-ciro-olive text-ciro-light border-2 border-ciro-dark px-6 py-3 font-display font-extrabold text-xs uppercase tracking-widest hover:bg-ciro-dark hover:text-ciro-cream transition-all duration-150"
             >
               GET DIRECTIONS
             </a>
@@ -56,7 +56,7 @@ export const Jaipur: React.FC = () => {
             </a>
             <a
               href="#reserve"
-              className="bg-ciro-olive text-ciro-light border-2 border-ciro-dark px-6 py-3 font-display font-extrabold text-xs uppercase tracking-widest shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150"
+              className="bg-ciro-olive text-ciro-light border-2 border-ciro-dark px-6 py-3 font-display font-extrabold text-xs uppercase tracking-widest hover:bg-ciro-dark hover:text-ciro-cream transition-all duration-150"
               data-cursor="book"
             >
               BOOK TABLE
@@ -64,41 +64,21 @@ export const Jaipur: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side: Stylized Map Inspired Vector Graphic */}
+        {/* Right Side: Live Interactive Map Frame */}
         <div className="lg:col-span-6 flex justify-center">
-          <div className="w-full max-w-[420px] bg-ciro-espresso border-3 border-ciro-dark p-6 shadow-retro-lg text-ciro-cream relative overflow-hidden select-none">
-            {/* Dots background overlay */}
-            <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none" />
-
-            {/* Stylized Jaipur Arch outline & layout grid representing a Map */}
-            <div className="relative border border-ciro-cream/20 p-8 h-80 flex flex-col justify-between rounded-none bg-ciro-dark">
-              {/* Fake grid map elements */}
-              <div className="absolute top-4 left-[20%] w-[2px] h-[75%] bg-ciro-saffron/20 border-dashed border-l" />
-              <div className="absolute top-[40%] left-4 w-[75%] h-[2px] bg-ciro-lime/20 border-dashed border-t" />
-
-              {/* Archetypal arch vector indicator */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-40 border-3 border-ciro-olive/40 bg-transparent flex items-center justify-center rounded-t-full">
-                <div className="w-4 h-4 rounded-full bg-ciro-olive animate-ping" />
-                <div className="absolute w-3 h-3 rounded-full bg-ciro-olive border border-ciro-dark" />
-              </div>
-
-              <div className="text-[10px] font-display font-bold text-ciro-cream/50 tracking-wider flex justify-between">
-                <span>N 26.8504°</span>
-                <span>E 75.8203°</span>
-              </div>
-
-              <div className="text-center font-display font-black text-xs text-ciro-saffron tracking-widest uppercase">
-                * CIRO CO JAIPUR *
-              </div>
-
-              <div className="text-[10px] font-display font-bold text-ciro-cream/50 text-right tracking-wider">
-                MATA COLONY, JLN MARG
-              </div>
-            </div>
-            
-            <div className="mt-4 flex justify-between items-center text-xs font-display font-black uppercase tracking-wider text-ciro-saffron">
-              <span>CONTEMPORARY JAIPUR</span>
-              <span className="text-ciro-olive"><i className="fa-solid fa-map-location-dot"></i> LOCALIZED</span>
+          <div className="w-full max-w-[420px] aspect-[4/5] bg-ciro-cream border-3 border-ciro-dark p-2 shadow-retro-lg rounded-[32px] overflow-hidden relative select-none">
+            {/* Live Google Map embed */}
+            <div className="w-full h-full rounded-[24px] overflow-hidden border-2 border-ciro-dark relative bg-ciro-dark/5">
+              <iframe
+                src="https://maps.google.com/maps?q=Ciro%20Co,%20Malviya%20Nagar,%20Jaipur&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              ></iframe>
             </div>
           </div>
         </div>
@@ -107,4 +87,5 @@ export const Jaipur: React.FC = () => {
     </section>
   );
 };
+
 export default Jaipur;

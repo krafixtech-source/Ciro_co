@@ -135,7 +135,7 @@ export const FloatingNav: React.FC = () => {
               <a
                 href="#reserve"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-ciro-olive text-ciro-light border border-ciro-dark py-4 text-center font-display font-black text-sm uppercase tracking-widest shadow-sm rounded-full active:translate-y-[2px] hover:bg-ciro-dark hover:text-ciro-light transition-all duration-200"
+                className="bg-ciro-olive text-ciro-light border border-ciro-dark py-4 text-center font-display font-black text-sm uppercase tracking-widest rounded-full hover:bg-ciro-dark hover:text-ciro-light transition-colors duration-200"
               >
                 RESERVE A TABLE
               </a>

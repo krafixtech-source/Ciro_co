@@ -43,7 +43,7 @@ export const SocialInstagram: React.FC = () => {
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-ciro-dark text-ciro-cream border-2 border-ciro-dark px-6 py-3 font-display font-black text-xs uppercase tracking-widest shadow-retro-orange hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150"
+          className="bg-[#829375] text-[#FEF7EC] border-2 border-ciro-dark px-6 py-3 font-display font-black text-xs uppercase tracking-widest hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300"
         >
           FOLLOW @CIROCO
         </a>

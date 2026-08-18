@@ -259,7 +259,7 @@ export const ReservationCTA: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="mt-4 bg-ciro-dark text-ciro-light font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150 cursor-pointer"
+                  className="mt-4 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer"
                 >
                   CONFIRM BOOKING
                 </button>
@@ -284,7 +284,7 @@ export const ReservationCTA: React.FC = () => {
 
                 <button
                   onClick={handleReset}
-                  className="mt-8 bg-ciro-dark text-ciro-light font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 px-6 w-full shadow-retro hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-150 cursor-pointer"
+                  className="mt-8 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 px-6 w-full hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer"
                 >
                   BOOK ANOTHER TABLE
                 </button>

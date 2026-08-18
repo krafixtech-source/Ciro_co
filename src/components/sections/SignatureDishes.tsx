@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface DishCard {
   id: string;
   name: string;
   category: string;
   desc: string;
-  price: string;
   imgUrl: string;
   aspectClass: string;
-  bgColorClass: string;
   imageSlotId: string;
 }
 
@@ -19,10 +21,8 @@ export const SignatureDishes: React.FC = () => {
       name: 'Truffle Fettuccine Wild Mushroom',
       category: 'PASTA',
       desc: 'Hand-rolled fresh fettuccine, white truffle cream, wild mushrooms, and 24-month aged Parmigiano.',
-      price: '₹495',
       imgUrl: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80',
       aspectClass: 'aspect-[3/4]',
-      bgColorClass: 'bg-ciro-lime',
       imageSlotId: 'signatureDish01',
     },
     {
@@ -30,10 +30,8 @@ export const SignatureDishes: React.FC = () => {
       name: 'Burrata & Parma Sourdough Pizza',
       category: 'PIZZA',
       desc: 'Sourdough crust, San Marzano marinara, creamy fresh burrata ball, parma ham, arugula, olive oil.',
-      price: '₹545',
       imgUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
       aspectClass: 'aspect-square',
-      bgColorClass: 'bg-ciro-orange',
       imageSlotId: 'signatureDish02',
     },
     {
@@ -41,10 +39,8 @@ export const SignatureDishes: React.FC = () => {
       name: 'Birria Beef Soft Tacos',
       category: 'TACOS',
       desc: 'Three slow-braised beef tacos on hand-pressed corn tortillas with consome dip, fresh lime, and cilantro.',
-      price: '₹425',
       imgUrl: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80',
       aspectClass: 'aspect-[4/3]',
-      bgColorClass: 'bg-ciro-saffron',
       imageSlotId: 'signatureDish03',
     },
     {
@@ -52,32 +48,54 @@ export const SignatureDishes: React.FC = () => {
       name: 'Signature Rose Tiramisu',
       category: 'DESSERTS',
       desc: 'Layers of espressoladyfingers, velvety mascarpone cream, rose syrup infusion, dusted with cocoa.',
-      price: '₹295',
       imgUrl: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80',
       aspectClass: 'aspect-[3/4]',
-      bgColorClass: 'bg-ciro-olive',
       imageSlotId: 'signatureDish04',
     },
   ];
 
+  useEffect(() => {
+    // Scroll tilt animation for all cards
+    const cards = gsap.utils.toArray('.dish-card-scroll');
+    cards.forEach((card: any, idx: number) => {
+      // Alternate tilt direction: even cards tilt left-to-right, odd cards tilt right-to-left
+      const startTilt = idx % 2 === 0 ? -12 : 12;
+      const endTilt = idx % 2 === 0 ? 12 : -12;
+      
+      gsap.fromTo(card,
+        { rotate: startTilt },
+        {
+          rotate: endTilt,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom', // starts animating when card enters viewport
+            end: 'bottom top',   // ends when card leaves viewport
+            scrub: true,
+          }
+        }
+      );
+    });
+  }, []);
+
   return (
     <section
-      className="relative w-full min-h-screen bg-ciro-dark text-ciro-cream py-24 px-6 md:px-12 border-b-3 border-ciro-dark"
+      className="relative w-full min-h-screen bg-[#FBF5EB] text-ciro-dark py-24 px-6 md:px-12 border-b-3 border-ciro-dark"
       id="gallery"
     >
-      <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-dots opacity-5 pointer-events-none" />
 
       {/* Header */}
       <div className="max-w-7xl mx-auto w-full mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div>
-          <span className="font-display font-black text-xs uppercase tracking-[0.25em] text-ciro-lime">
+          <span className="font-display font-black text-xs uppercase tracking-[0.25em] text-ciro-olive">
             CULINARY CURATION
           </span>
-          <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl uppercase mt-2 text-ciro-cream leading-none">
+          <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl uppercase mt-2 text-ciro-dark leading-none">
             THE GOOD STUFF.
           </h2>
         </div>
-        <p className="font-sans font-medium text-lg text-ciro-cream/70 max-w-sm">
+        <p className="font-sans font-medium text-lg text-ciro-espresso max-w-sm">
           A visual journey through our kitchen. Fresh, colorful, and prepared with pure culinary excitement daily.
         </p>
       </div>
@@ -91,35 +109,32 @@ export const SignatureDishes: React.FC = () => {
               i % 2 === 1 ? 'md:translate-y-24' : ''
             }`}
           >
-            {/* Card Outer */}
-            <div
-              className={`w-full ${dish.bgColorClass} border-3 border-ciro-dark p-3 shadow-retro-lg cursor-pointer transform transition-all duration-300 hover:rotate-[-1deg] hover:translate-y-[-4px] group`}
-              data-cursor="view"
-            >
-              {/* Image Inner with Scale Transition */}
-              <div className={`w-full ${dish.aspectClass} overflow-hidden border-2 border-ciro-dark bg-ciro-dark/20 relative`}>
+            {/* Clean image container that will tilt on scroll */}
+            <div className="dish-card-scroll w-full flex flex-col group cursor-pointer origin-center">
+              
+              {/* Image with rounded corners and no frame/shadow */}
+              <div className={`w-full ${dish.aspectClass} overflow-hidden rounded-[32px] bg-ciro-dark/5 relative`}>
                 <img
                   src={dish.imgUrl}
                   alt={dish.name}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   id={dish.imageSlotId}
                 />
-                <span className="absolute top-4 left-4 bg-ciro-cream text-ciro-dark border-2 border-ciro-dark px-3 py-1 font-display font-black text-[10px] uppercase tracking-wider">
+                <span className="absolute top-4 left-4 bg-[#FBF5EB] text-ciro-dark border border-ciro-dark px-3 py-1 rounded-full font-display font-extrabold text-[9px] uppercase tracking-wider shadow-sm">
                   {dish.category}
                 </span>
               </div>
 
               {/* Title & Desc */}
-              <div className="mt-6 text-ciro-dark flex flex-col gap-2">
-                <div className="flex justify-between items-start gap-4">
-                  <h3 className="font-serif italic font-extrabold text-xl md:text-2xl leading-tight group-hover:translate-y-[-6px] transition-transform duration-300">
-                    {dish.name}
-                  </h3>
-                </div>
-                <p className="font-sans font-semibold text-xs leading-relaxed opacity-90 border-t border-ciro-dark/20 pt-2">
+              <div className="mt-5 text-ciro-dark flex flex-col gap-2">
+                <h3 className="font-serif font-medium text-xl md:text-2xl leading-tight text-ciro-dark group-hover:text-ciro-olive transition-colors duration-300">
+                  {dish.name}
+                </h3>
+                <p className="font-sans font-medium text-xs leading-relaxed text-ciro-espresso/80 border-t border-ciro-dark/10 pt-3">
                   {dish.desc}
                 </p>
               </div>
+
             </div>
           </div>
         ))}
@@ -130,4 +145,5 @@ export const SignatureDishes: React.FC = () => {
     </section>
   );
 };
+
 export default SignatureDishes;
