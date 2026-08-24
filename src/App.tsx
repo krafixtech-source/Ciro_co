@@ -5,7 +5,7 @@ import CustomCursor from './components/CustomCursor';
 import FloatingNav from './components/FloatingNav';
 import Hero from './components/sections/Hero';
 import BrandIntro from './components/sections/BrandIntro';
-import Philosophy from './components/sections/Philosophy';
+import PizzaShowcaseHero from './components/sections/PizzaShowcaseHero';
 import ItalianMexican from './components/sections/ItalianMexican';
 import SignatureDishes from './components/sections/SignatureDishes';
 import MenuPreview from './components/sections/MenuPreview';
@@ -133,8 +133,8 @@ export const App: React.FC = () => {
             {/* DISCOVER */}
             <BrandIntro />
 
-            {/* ITALY / MEXICO / COFFEE - Story Panels */}
-            <Philosophy />
+            {/* ROTATIONAL PIZZA SHOWCASE HERO CAROUSEL */}
+            <PizzaShowcaseHero />
 
             {/* COLLISION - Split Screen converging */}
             <ItalianMexican />
