@@ -7,6 +7,7 @@ import Hero from './components/sections/Hero';
 import BrandIntro from './components/sections/BrandIntro';
 import PizzaShowcaseHero from './components/sections/PizzaShowcaseHero';
 import ItalianMexican from './components/sections/ItalianMexican';
+import CustardUbeEditorial from './components/sections/CustardUbeEditorial';
 import SignatureDishes from './components/sections/SignatureDishes';
 import MenuPreview from './components/sections/MenuPreview';
 import FoodCinema from './components/sections/FoodCinema';
@@ -138,6 +139,9 @@ export const App: React.FC = () => {
 
             {/* COLLISION - Split Screen converging */}
             <ItalianMexican />
+
+            {/* CUSTURD UBE - Luxury kinetic editorial drink section */}
+            <CustardUbeEditorial />
 
             {/* FOOD - Signature showcases & Menu previews */}
             <SignatureDishes />
