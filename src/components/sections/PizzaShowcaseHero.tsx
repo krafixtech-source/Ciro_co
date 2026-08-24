@@ -278,9 +278,6 @@ export const PizzaShowcaseHero: React.FC = () => {
             }
           }}
         >
-          {/* Under-Pie Deep Contact Shadow */}
-          <div className="absolute inset-6 rounded-full bg-black/60 blur-3xl pointer-events-none -z-10" />
-
           {/* Rotating Pie Wrapper (Rotates on its own center axis) */}
           <motion.div
             animate={{
@@ -292,7 +289,7 @@ export const PizzaShowcaseHero: React.FC = () => {
               damping: 16,
               mass: 1,
             }}
-            className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center origin-center select-none shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
+            className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center origin-center select-none"
             style={{
               clipPath: 'circle(44% at 50% 50%)', // Tight clip path to cleanly exclude any background checkerboard
             }}
@@ -319,14 +316,14 @@ export const PizzaShowcaseHero: React.FC = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className="px-3 py-1.5 rounded-full bg-black/25 hover:bg-black/40 backdrop-blur-md border border-white/20 text-white text-xs font-mono font-bold tracking-wider flex items-center gap-2 transition-all cursor-pointer"
+            className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/20 text-white text-xs font-mono font-bold tracking-wider flex items-center gap-2 transition-all cursor-pointer"
           >
             {isAutoPlay ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
             <span>{isAutoPlay ? 'AUTOPLAY ON' : 'AUTOPLAY OFF'}</span>
           </button>
         </div>
 
-        <div className="font-mono text-xs text-white/80 font-bold tracking-widest">
+        <div className="font-mono text-xs text-white/80 font-bold tracking-widest bg-white/15 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-md">
           {activeFlavor.flavorNumber} <span className="text-white/40">/ 04</span>
         </div>
       </div>
