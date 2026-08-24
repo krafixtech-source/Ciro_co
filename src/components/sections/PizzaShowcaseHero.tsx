@@ -151,54 +151,8 @@ export const PizzaShowcaseHero: React.FC = () => {
       style={{ backgroundColor: activeFlavor.bgColor }}
       id="philosophy"
     >
-      {/* 1. Subtle Radial Vignette & Texture */}
-      <div className="absolute inset-0 bg-radial from-black/0 via-black/5 to-black/30 pointer-events-none z-0" />
+      {/* 1. Clean Background Texture */}
       <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none z-0" />
-
-      {/* 2. Floating Corner Fruits */}
-      {/* Top-Left Floating Corner Fruit */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`decor-left-${activeFlavor.id}`}
-          initial={{ opacity: 0, scale: 0.8, rotate: -35, x: -40, y: -40 }}
-          animate={{ opacity: 0.95, scale: 1, rotate: -15, x: 0, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, rotate: 10, x: -30, y: -30 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-6 sm:top-10 left-4 sm:left-12 w-36 sm:w-52 md:w-64 lg:w-72 aspect-square pointer-events-none z-20"
-        >
-          <img
-            src={activeFlavor.decorLeft}
-            alt={`${activeFlavor.name} left decor`}
-            className="w-full h-full object-cover rounded-full"
-            style={{
-              clipPath: 'circle(46% at 50% 50%)',
-              filter: 'drop-shadow(0 25px 35px rgba(0,0,0,0.35))',
-            }}
-          />
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Top-Right Floating Corner Fruit with Leaves */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`decor-right-${activeFlavor.id}`}
-          initial={{ opacity: 0, scale: 0.8, rotate: 35, x: 40, y: -40 }}
-          animate={{ opacity: 0.95, scale: 1, rotate: 20, x: 0, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, rotate: -10, x: 30, y: -30 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-          className="absolute top-6 sm:top-10 right-4 sm:right-12 w-36 sm:w-52 md:w-64 lg:w-72 aspect-square pointer-events-none z-20"
-        >
-          <img
-            src={activeFlavor.decorRight}
-            alt={`${activeFlavor.name} right decor`}
-            className="w-full h-full object-cover rounded-full -rotate-45"
-            style={{
-              clipPath: 'circle(46% at 50% 50%)',
-              filter: 'drop-shadow(0 25px 35px rgba(0,0,0,0.35))',
-            }}
-          />
-        </motion.div>
-      </AnimatePresence>
 
       {/* 3. Top Center Typography: Heading + 3-line description */}
       <div className="relative z-30 text-center max-w-xl mx-auto px-6 mt-4 sm:mt-6">
@@ -348,10 +302,10 @@ export const PizzaShowcaseHero: React.FC = () => {
                 key={activeFlavor.id}
                 src={activeFlavor.pieImage}
                 alt={activeFlavor.name}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1.14 }} // Slight scale ensures pie fills edge to edge with zero border artifacts
-                exit={{ opacity: 0, scale: 1.2 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1.25 }} // Scale ensures only golden crust and filling is visible
+                exit={{ opacity: 0, scale: 1.3 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="w-full h-full object-cover rounded-full pointer-events-none select-none"
                 draggable={false}
               />
