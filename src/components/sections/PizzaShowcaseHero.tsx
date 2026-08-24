@@ -221,12 +221,12 @@ export const PizzaShowcaseHero: React.FC = () => {
       </div>
 
       {/* 4. Center-Bottom Main Composition: Huge Pie + Concentric Rings + Arc Navigation */}
-      <div className="relative w-full flex-1 flex flex-col items-center justify-end overflow-visible z-20">
+      <div className="relative w-full flex-1 flex flex-col items-center justify-end overflow-visible z-20 pb-0">
         
         {/* Navigation Arrow Left */}
         <button
           onClick={() => paginate(-1)}
-          className="absolute left-6 sm:left-16 lg:left-24 top-1/2 -translate-y-1/2 z-40 w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-xl group cursor-pointer"
+          className="absolute left-4 sm:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-40 w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-xl group cursor-pointer"
           aria-label="Previous Pie"
         >
           <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
@@ -235,17 +235,17 @@ export const PizzaShowcaseHero: React.FC = () => {
         {/* Navigation Arrow Right */}
         <button
           onClick={() => paginate(1)}
-          className="absolute right-6 sm:right-16 lg:right-24 top-1/2 -translate-y-1/2 z-40 w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-xl group cursor-pointer"
+          className="absolute right-4 sm:right-12 lg:right-20 top-1/2 -translate-y-1/2 z-40 w-12 sm:w-14 h-12 sm:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-xl group cursor-pointer"
           aria-label="Next Pie"
         >
           <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
 
         {/* Outer Orbital Arch 1 */}
-        <div className="absolute bottom-0 translate-y-[44%] w-[820px] sm:w-[1050px] md:w-[1240px] aspect-square rounded-full border border-white/15 pointer-events-none z-10" />
+        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[820px] sm:w-[1050px] md:w-[1240px] aspect-square rounded-full border border-white/15 pointer-events-none z-10" />
 
         {/* Primary Orbital Arch with Flavor Labels (Ring 2) */}
-        <div className="absolute bottom-0 translate-y-[44%] w-[720px] sm:w-[920px] md:w-[1080px] aspect-square rounded-full border border-white/25 pointer-events-none z-20">
+        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[720px] sm:w-[920px] md:w-[1080px] aspect-square rounded-full border border-white/25 pointer-events-none z-20">
           
           {/* Active Dot Indicator on the Ring Line */}
           <motion.div
@@ -261,10 +261,10 @@ export const PizzaShowcaseHero: React.FC = () => {
         </div>
 
         {/* Inner Orbital Arch 3 (Dashed) */}
-        <div className="absolute bottom-0 translate-y-[44%] w-[620px] sm:w-[780px] md:w-[920px] aspect-square rounded-full border border-dashed border-white/20 pointer-events-none z-10" />
+        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[620px] sm:w-[780px] md:w-[920px] aspect-square rounded-full border border-dashed border-white/20 pointer-events-none z-10" />
 
         {/* 4 Flavor Text Labels Arranged Along the Arch Orbit */}
-        <div className="absolute bottom-0 translate-y-[44%] w-[720px] sm:w-[920px] md:w-[1080px] aspect-square rounded-full pointer-events-none z-30">
+        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[720px] sm:w-[920px] md:w-[1080px] aspect-square rounded-full pointer-events-none z-30">
           {FLAVORS.map((flavor, index) => {
             const isActive = index === currentIndex;
             // Place each label along the top arc
@@ -282,7 +282,7 @@ export const PizzaShowcaseHero: React.FC = () => {
                   style={{
                     transform: `rotate(${-flavor.angle}deg)`, // Counter-rotate text so it stays upright
                   }}
-                  className={`-translate-y-8 sm:-translate-y-10 pointer-events-auto cursor-pointer transition-all duration-300 font-display font-black tracking-widest uppercase text-xs sm:text-sm md:text-base flex flex-col items-center gap-1.5 ${
+                  className={`-translate-y-9 sm:-translate-y-12 pointer-events-auto cursor-pointer transition-all duration-300 font-display font-black tracking-widest uppercase text-xs sm:text-sm md:text-base flex flex-col items-center gap-1.5 ${
                     isActive
                       ? 'text-white scale-110 drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]'
                       : 'text-white/65 hover:text-white hover:scale-105'
@@ -302,7 +302,7 @@ export const PizzaShowcaseHero: React.FC = () => {
           })}
         </div>
 
-        {/* Large Round Pie: Centered at Bottom, Rotating on Its Own Axis */}
+        {/* Large Round Pie: Centered at Bottom with Much More Height Exposed, Rotating on Its Own Axis */}
         <motion.div
           style={{
             rotateX: tiltX,
@@ -310,7 +310,7 @@ export const PizzaShowcaseHero: React.FC = () => {
             transformStyle: 'preserve-3d',
             perspective: 1000,
           }}
-          className="relative w-[520px] sm:w-[680px] md:w-[820px] lg:w-[940px] aspect-square flex items-center justify-center translate-y-[42%] md:translate-y-[45%] z-20 cursor-grab active:cursor-grabbing"
+          className="relative w-[540px] sm:w-[700px] md:w-[840px] lg:w-[960px] aspect-square flex items-center justify-center translate-y-[20%] sm:translate-y-[18%] md:translate-y-[15%] z-20 cursor-grab active:cursor-grabbing"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.25}
@@ -325,7 +325,7 @@ export const PizzaShowcaseHero: React.FC = () => {
           }}
         >
           {/* Under-Pie Deep Contact Shadow */}
-          <div className="absolute inset-4 rounded-full bg-black/60 blur-3xl pointer-events-none -z-10" />
+          <div className="absolute inset-6 rounded-full bg-black/60 blur-3xl pointer-events-none -z-10" />
 
           {/* Rotating Pie Wrapper (Rotates on its own center axis) */}
           <motion.div
@@ -340,7 +340,7 @@ export const PizzaShowcaseHero: React.FC = () => {
             }}
             className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center origin-center select-none shadow-[0_30px_70px_rgba(0,0,0,0.6)]"
             style={{
-              clipPath: 'circle(48.5% at 50% 50%)',
+              clipPath: 'circle(44% at 50% 50%)', // Tight clip path to cleanly exclude any background checkerboard
             }}
           >
             <AnimatePresence mode="wait">
@@ -348,9 +348,9 @@ export const PizzaShowcaseHero: React.FC = () => {
                 key={activeFlavor.id}
                 src={activeFlavor.pieImage}
                 alt={activeFlavor.name}
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.04 }}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1.14 }} // Slight scale ensures pie fills edge to edge with zero border artifacts
+                exit={{ opacity: 0, scale: 1.2 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 className="w-full h-full object-cover rounded-full pointer-events-none select-none"
                 draggable={false}
