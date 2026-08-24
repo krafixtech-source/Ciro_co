@@ -10,7 +10,7 @@ export const CustardUbeEditorial: React.FC = () => {
     offset: ['start end', 'end start'],
   });
 
-  const scrollMarqueeShift = useTransform(scrollYProgress, [0, 1], [120, -120]);
+  const scrollMarqueeShift = useTransform(scrollYProgress, [0, 1], [140, -140]);
   const drinkScrollParallax = useTransform(scrollYProgress, [0, 1], [-20, 20]);
 
   // 3D Mouse Parallax Tracking
@@ -45,25 +45,31 @@ export const CustardUbeEditorial: React.FC = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-[420px] sm:h-[480px] md:h-[550px] overflow-hidden bg-[#6F4A7E] flex flex-col justify-between select-none py-6 px-4 sm:px-8 border-y-3 border-ciro-dark"
+      className="relative w-full h-[440px] sm:h-[500px] md:h-[560px] overflow-hidden bg-[#5E2772] flex flex-col justify-between select-none py-6 px-4 sm:px-8 border-y-3 border-ciro-dark"
       style={{
-        backgroundColor: '#6F4A7E',
+        backgroundColor: '#5E2772', // Richer vibrant royal Ube purple
       }}
     >
-      {/* 1. Subtle Paper / Film Grain Overlay */}
+      {/* 1. Subtle Paper / Film Grain & Lighting Overlay */}
       <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-radial from-transparent via-transparent to-black/20 pointer-events-none z-0" />
 
-      {/* 2. Top Header Accent Labels */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#E8D8E8]/75 font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase font-semibold">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#E8D8E8] animate-pulse" />
-          <span>SIGNATURE DRINK</span>
+      {/* 2. Top Header Accent Labels with "CUSTURD UBE" in Top Text */}
+      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#EADBF0] font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase font-semibold">
+        <div className="flex items-center gap-2 text-[#EADBF0]/80">
+          <span className="w-2 h-2 rounded-full bg-[#EADBF0] animate-pulse" />
+          <span className="hidden sm:inline">SIGNATURE DRINK</span>
+          <span className="sm:hidden">SIGNATURE</span>
         </div>
-        <div className="hidden sm:block text-[#E8D8E8]/60">
-          CIRO CO • CRAFTED BEVERAGES
+
+        {/* CUSTURD UBE - Prominent Top Center Text */}
+        <div className="text-center">
+          <h3 className="font-display font-black text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.3em] text-[#FFF0FF] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]">
+            CUSTURD UBE
+          </h3>
         </div>
-        <div>
+
+        <div className="text-[#EADBF0]/80 text-right">
           <span>JAIPUR // 2026</span>
         </div>
       </div>
@@ -71,7 +77,7 @@ export const CustardUbeEditorial: React.FC = () => {
       {/* 3. GIANT KINETIC TYPOGRAPHY (Moving Seamlessly Right -> Left in Background) */}
       <div className="absolute inset-0 flex flex-col justify-center pointer-events-none overflow-hidden z-10 opacity-90">
         
-        {/* Row 1: Giant Outlined / Filled Kinetic Marquee (Right to Left) */}
+        {/* Row 1: Giant Filled Kinetic Marquee (Right to Left) */}
         <motion.div
           style={{ x: scrollMarqueeShift }}
           className="w-full flex whitespace-nowrap overflow-visible"
@@ -85,16 +91,16 @@ export const CustardUbeEditorial: React.FC = () => {
             }}
             className="flex flex-nowrap shrink-0 items-center will-change-transform"
           >
-            <span className="font-display font-black text-[18vw] sm:text-[14vw] md:text-[150px] lg:text-[190px] xl:text-[230px] uppercase tracking-tighter text-[#E8D8E8]/20 leading-none mr-8">
+            <span className="font-display font-black text-[18vw] sm:text-[14vw] md:text-[150px] lg:text-[190px] xl:text-[230px] uppercase tracking-tighter text-[#EADBF0]/22 leading-none mr-8">
               {marqueeText}
             </span>
-            <span className="font-display font-black text-[18vw] sm:text-[14vw] md:text-[150px] lg:text-[190px] xl:text-[230px] uppercase tracking-tighter text-[#E8D8E8]/20 leading-none mr-8">
+            <span className="font-display font-black text-[18vw] sm:text-[14vw] md:text-[150px] lg:text-[190px] xl:text-[230px] uppercase tracking-tighter text-[#EADBF0]/22 leading-none mr-8">
               {marqueeText}
             </span>
           </motion.div>
         </motion.div>
 
-        {/* Row 2: Secondary Offset Kinetic Marquee (Moving Slightly Faster) */}
+        {/* Row 2: Secondary Offset Kinetic Marquee (Text-Stroked Outline) */}
         <motion.div
           style={{ x: scrollMarqueeShift }}
           className="w-full flex whitespace-nowrap overflow-visible -mt-6 sm:-mt-10 md:-mt-14"
@@ -108,16 +114,18 @@ export const CustardUbeEditorial: React.FC = () => {
             }}
             className="flex flex-nowrap shrink-0 items-center will-change-transform"
           >
-            <span className="font-display font-black text-[16vw] sm:text-[12vw] md:text-[130px] lg:text-[170px] xl:text-[210px] uppercase tracking-tighter text-transparent leading-none mr-8"
+            <span
+              className="font-display font-black text-[16vw] sm:text-[12vw] md:text-[130px] lg:text-[170px] xl:text-[210px] uppercase tracking-tighter text-transparent leading-none mr-8"
               style={{
-                WebkitTextStroke: '2px rgba(232, 216, 232, 0.18)',
+                WebkitTextStroke: '2px rgba(234, 219, 240, 0.22)',
               }}
             >
               {marqueeText}
             </span>
-            <span className="font-display font-black text-[16vw] sm:text-[12vw] md:text-[130px] lg:text-[170px] xl:text-[210px] uppercase tracking-tighter text-transparent leading-none mr-8"
+            <span
+              className="font-display font-black text-[16vw] sm:text-[12vw] md:text-[130px] lg:text-[170px] xl:text-[210px] uppercase tracking-tighter text-transparent leading-none mr-8"
               style={{
-                WebkitTextStroke: '2px rgba(232, 216, 232, 0.18)',
+                WebkitTextStroke: '2px rgba(234, 219, 240, 0.22)',
               }}
             >
               {marqueeText}
@@ -153,7 +161,7 @@ export const CustardUbeEditorial: React.FC = () => {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="relative h-full w-auto flex items-center justify-center filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.4)]"
+            className="relative h-full w-auto flex items-center justify-center filter drop-shadow-[0_20px_35px_rgba(0,0,0,0.45)]"
           >
             <img
               src="/assets/ube_drink.png"
@@ -165,18 +173,26 @@ export const CustardUbeEditorial: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* 5. Bottom Editorial Metadata Labels */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#E8D8E8]/75 font-mono text-[9px] sm:text-[11px] md:text-xs tracking-[0.2em] uppercase font-medium pt-2">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <span className="px-2.5 py-0.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white font-bold">
-            NEW
-          </span>
-          <span className="hidden sm:inline">UBE • VELVET CREAM • VANILLA</span>
-          <span className="sm:hidden">UBE • CREAM</span>
+      {/* 5. Bottom Editorial Metadata Labels with "NEW ARRIVAL" in Bottom Center */}
+      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#EADBF0]/80 font-mono text-[9px] sm:text-[11px] md:text-xs tracking-[0.2em] uppercase font-medium pt-2">
+        {/* Left info */}
+        <div className="w-1/3 text-left">
+          <span className="hidden md:inline">UBE • VELVET CREAM • VANILLA</span>
+          <span className="md:hidden">100% ORGANIC</span>
         </div>
 
-        <div className="text-right text-[#E8D8E8]/60">
-          <span>HOUSE SPECIALTY // 100% ORGANIC</span>
+        {/* Center: NEW ARRIVAL Badge */}
+        <div className="w-1/3 flex justify-center">
+          <div className="px-3.5 sm:px-5 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-mono text-[10px] sm:text-xs tracking-[0.3em] font-bold uppercase shadow-sm flex items-center gap-1.5 sm:gap-2 transition-all">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFF0FF]" />
+            <span>NEW ARRIVAL</span>
+          </div>
+        </div>
+
+        {/* Right info */}
+        <div className="w-1/3 text-right text-[#EADBF0]/70">
+          <span className="hidden sm:inline">HOUSE SPECIALTY // COLD PRESSED</span>
+          <span className="sm:hidden">SPECIALTY</span>
         </div>
       </div>
     </section>
