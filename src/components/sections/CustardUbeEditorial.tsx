@@ -48,7 +48,7 @@ export const CustardUbeEditorial: React.FC = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-[460px] sm:h-[520px] md:h-[580px] overflow-hidden flex flex-col justify-between select-none py-4 sm:py-6 px-4 sm:px-8 border-y-3 border-ciro-dark"
+      className="relative w-full h-[440px] sm:h-[500px] md:h-[550px] overflow-hidden flex items-center justify-center select-none border-y-3 border-ciro-dark"
       style={{
         backgroundColor: '#723385', // Rich, vibrant royal purple
       }}
@@ -57,23 +57,8 @@ export const CustardUbeEditorial: React.FC = () => {
       <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none z-0" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15 pointer-events-none z-0" />
 
-      {/* 2. Top Header Accent Micro-Labels */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#F5E6FA]/85 font-mono text-[9px] sm:text-[11px] tracking-[0.25em] uppercase font-semibold">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#F5E6FA] animate-pulse" />
-          <span className="hidden sm:inline">SIGNATURE DRINK</span>
-          <span className="sm:hidden">SIGNATURE</span>
-        </div>
-        <div className="hidden sm:block text-[#F5E6FA]/65">
-          CIRO CO • CRAFTED BEVERAGES
-        </div>
-        <div>
-          <span>JAIPUR // 2026</span>
-        </div>
-      </div>
-
-      {/* 3. THREE GIANT MOVING KINETIC TYPOGRAPHY ROWS (Behind the Ube Drink) */}
-      <div className="absolute inset-0 flex flex-col justify-around py-8 sm:py-10 pointer-events-none overflow-hidden z-10 opacity-90">
+      {/* 2. THREE GIANT MOVING KINETIC TYPOGRAPHY ROWS (Behind the Ube Drink) */}
+      <div className="absolute inset-0 flex flex-col justify-around py-4 sm:py-6 pointer-events-none overflow-hidden z-10 opacity-90">
         
         {/* ROW 1 (TOP): Giant CUSTURD UBE Marquee (Right -> Left) */}
         <motion.div
@@ -89,49 +74,49 @@ export const CustardUbeEditorial: React.FC = () => {
             }}
             className="flex flex-nowrap shrink-0 items-center will-change-transform"
           >
-            <span className="font-display font-black text-[13vw] sm:text-[10vw] md:text-[100px] lg:text-[130px] xl:text-[150px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
+            <span className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
               {ubeMarqueeText}
             </span>
-            <span className="font-display font-black text-[13vw] sm:text-[10vw] md:text-[100px] lg:text-[130px] xl:text-[150px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
+            <span className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
               {ubeMarqueeText}
             </span>
           </motion.div>
         </motion.div>
 
-        {/* ROW 2 (MIDDLE): Giant CUSTURD UBE Stroked Outline (Right -> Left, Offset) */}
+        {/* ROW 2 (MIDDLE): Giant Outlined/Stroked NEW ARRIVAL Kinetic Marquee (Moves Left -> Right) */}
         <motion.div
           style={{ x: scrollShiftRow2 }}
           className="w-full flex whitespace-nowrap overflow-visible"
         >
           <motion.div
-            animate={{ x: ['-25%', '-75%'] }}
+            animate={{ x: ['-50%', '0%'] }}
             transition={{
               repeat: Infinity,
               ease: 'linear',
-              duration: 26,
+              duration: 24,
             }}
             className="flex flex-nowrap shrink-0 items-center will-change-transform"
           >
             <span
-              className="font-display font-black text-[13vw] sm:text-[10vw] md:text-[100px] lg:text-[130px] xl:text-[150px] uppercase tracking-tighter text-transparent leading-none mr-6 sm:mr-8"
+              className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-wider text-transparent leading-none mr-6 sm:mr-8"
               style={{
-                WebkitTextStroke: '2px rgba(245, 230, 250, 0.22)',
+                WebkitTextStroke: '2.5px rgba(245, 230, 250, 0.25)',
               }}
             >
-              {ubeMarqueeText}
+              {newArrivalMarqueeText}
             </span>
             <span
-              className="font-display font-black text-[13vw] sm:text-[10vw] md:text-[100px] lg:text-[130px] xl:text-[150px] uppercase tracking-tighter text-transparent leading-none mr-6 sm:mr-8"
+              className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-wider text-transparent leading-none mr-6 sm:mr-8"
               style={{
-                WebkitTextStroke: '2px rgba(245, 230, 250, 0.22)',
+                WebkitTextStroke: '2.5px rgba(245, 230, 250, 0.25)',
               }}
             >
-              {ubeMarqueeText}
+              {newArrivalMarqueeText}
             </span>
           </motion.div>
         </motion.div>
 
-        {/* ROW 3 (BOTTOM): Giant NEW ARRIVAL Kinetic Marquee (Right -> Left) */}
+        {/* ROW 3 (BOTTOM): Giant CUSTURD UBE Kinetic Marquee (Right -> Left) */}
         <motion.div
           style={{ x: scrollShiftRow3 }}
           className="w-full flex whitespace-nowrap overflow-visible"
@@ -141,22 +126,22 @@ export const CustardUbeEditorial: React.FC = () => {
             transition={{
               repeat: Infinity,
               ease: 'linear',
-              duration: 20,
+              duration: 21,
             }}
             className="flex flex-nowrap shrink-0 items-center will-change-transform"
           >
-            <span className="font-display font-black text-[11vw] sm:text-[8.5vw] md:text-[85px] lg:text-[110px] xl:text-[125px] uppercase tracking-wider text-[#F5E6FA]/20 leading-none mr-6 sm:mr-8">
-              {newArrivalMarqueeText}
+            <span className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
+              {ubeMarqueeText}
             </span>
-            <span className="font-display font-black text-[11vw] sm:text-[8.5vw] md:text-[85px] lg:text-[110px] xl:text-[125px] uppercase tracking-wider text-[#F5E6FA]/20 leading-none mr-6 sm:mr-8">
-              {newArrivalMarqueeText}
+            <span className="font-display font-black text-[14vw] sm:text-[11vw] md:text-[110px] lg:text-[140px] xl:text-[160px] uppercase tracking-tighter text-[#F5E6FA]/22 leading-none mr-6 sm:mr-8">
+              {ubeMarqueeText}
             </span>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* 4. HERO OBJECT: UBE DRINK (Centered in Front of All 3 Moving Rows) */}
-      <div className="relative z-20 w-full flex-1 flex items-center justify-center pointer-events-none">
+      {/* 3. HERO OBJECT: UBE DRINK (Centered in Front of All 3 Moving Rows) */}
+      <div className="relative z-20 w-full h-full flex items-center justify-center pointer-events-none">
         <motion.div
           style={{
             rotateX: drinkTiltX,
@@ -166,15 +151,15 @@ export const CustardUbeEditorial: React.FC = () => {
             transformStyle: 'preserve-3d',
             perspective: 1000,
           }}
-          className="relative h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] aspect-[1/1] flex items-center justify-center translate-y-1 sm:translate-y-2"
+          className="relative h-[280px] sm:h-[340px] md:h-[400px] lg:h-[440px] aspect-[1/1] flex items-center justify-center"
         >
           {/* Subtle Glass Contact Shadow */}
-          <div className="absolute bottom-4 w-40 sm:w-48 md:w-56 h-8 bg-black/45 blur-xl rounded-full transform scale-x-125 pointer-events-none -z-10" />
+          <div className="absolute bottom-3 w-44 sm:w-52 md:w-60 h-8 bg-black/45 blur-xl rounded-full transform scale-x-125 pointer-events-none -z-10" />
 
           {/* Floating Ube Drink Image */}
           <motion.div
             animate={{
-              y: [-4, 4, -4],
+              y: [-5, 5, -5],
               rotate: [-0.6, 0.6, -0.6],
             }}
             transition={{
@@ -192,29 +177,6 @@ export const CustardUbeEditorial: React.FC = () => {
             />
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* 5. BOTTOM CENTER BADGE & METADATA */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between text-[#F5E6FA]/85 font-mono text-[9px] sm:text-[11px] md:text-xs tracking-[0.2em] uppercase font-medium pt-2">
-        {/* Left flavor info */}
-        <div className="w-1/3 text-left">
-          <span className="hidden md:inline">UBE • VELVET CREAM • VANILLA</span>
-          <span className="md:hidden">100% ORGANIC</span>
-        </div>
-
-        {/* Center: Glowing NEW ARRIVAL Pill */}
-        <div className="w-1/3 flex justify-center">
-          <div className="px-4 sm:px-6 py-1 sm:py-1.5 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-mono text-[10px] sm:text-xs tracking-[0.3em] font-bold uppercase shadow-[0_4px_15px_rgba(0,0,0,0.25)] flex items-center gap-2 transition-all">
-            <span className="w-2 h-2 rounded-full bg-[#FFF0FF] animate-ping" />
-            <span>NEW ARRIVAL</span>
-          </div>
-        </div>
-
-        {/* Right info */}
-        <div className="w-1/3 text-right text-[#F5E6FA]/70">
-          <span className="hidden sm:inline">HOUSE SPECIALTY // COLD PRESSED</span>
-          <span className="sm:hidden">SPECIALTY</span>
-        </div>
       </div>
     </section>
   );
