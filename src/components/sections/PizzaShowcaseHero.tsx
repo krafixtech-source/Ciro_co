@@ -136,40 +136,40 @@ export const PizzaShowcaseHero: React.FC = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full min-h-[100vh] flex flex-col justify-between items-center overflow-hidden transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] select-none pt-8 sm:pt-12 md:pt-16 pb-6 sm:pb-8"
+      className="relative w-full h-[100dvh] min-h-[640px] max-h-[1080px] flex flex-col justify-between items-center overflow-hidden transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] select-none pt-20 sm:pt-22 md:pt-24 pb-4 sm:pb-6"
       style={{ backgroundColor: activeFlavor.bgColor }}
       id="philosophy"
     >
       {/* 1. Clean Background Grid Dots */}
       <div className="absolute inset-0 bg-grid-dots-light opacity-5 pointer-events-none z-0" />
 
-      {/* 2. Top Center Typography (Fully Responsive on Mobile / iPad / Desktop) */}
-      <div className="relative z-30 text-center max-w-xl mx-auto px-4 sm:px-6 mt-2 sm:mt-4">
+      {/* 2. Top Center Typography (Positioned with generous clearance below header) */}
+      <div className="relative z-30 text-center max-w-xl mx-auto px-4 sm:px-6 shrink-0">
         <AnimatePresence mode="wait">
           <motion.div
             key={`heading-${activeFlavor.id}`}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-display font-black text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-wide uppercase leading-tight">
+            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white tracking-wide uppercase leading-tight">
               {activeFlavor.heading}
             </h2>
-            <p className="mt-2 sm:mt-3 md:mt-4 font-sans text-[11px] sm:text-xs md:text-sm text-white/90 leading-relaxed font-normal max-w-[290px] sm:max-w-md md:max-w-lg mx-auto">
+            <p className="mt-1.5 sm:mt-2 md:mt-2.5 font-sans text-[11px] sm:text-xs md:text-sm text-white/90 leading-relaxed font-normal max-w-[280px] sm:max-w-md md:max-w-lg mx-auto">
               {activeFlavor.description}
             </p>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* 3. Center-Bottom Main Composition (Fluid Scaled for Mobile, iPad, and Desktop) */}
+      {/* 3. Center-Bottom Main Composition (Orbit Rings & Pie Sized to Viewport Height to Eliminate Overlaps) */}
       <div className="relative w-full flex-1 flex flex-col items-center justify-end overflow-visible z-20 px-2 sm:px-4">
         
         {/* Navigation Arrow Left */}
         <button
           onClick={() => paginate(-1)}
-          className="absolute left-2 sm:left-6 md:left-12 lg:left-20 top-1/2 -translate-y-1/2 z-40 w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-lg group cursor-pointer"
+          className="absolute left-3 sm:left-6 md:left-10 lg:left-16 top-1/2 -translate-y-1/2 z-40 w-9 sm:w-11 md:w-13 h-9 sm:h-11 md:h-13 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-lg group cursor-pointer"
           aria-label="Previous Pie"
         >
           <ChevronLeft className="w-5 sm:w-6 h-5 sm:h-6 group-hover:-translate-x-0.5 transition-transform" />
@@ -178,17 +178,17 @@ export const PizzaShowcaseHero: React.FC = () => {
         {/* Navigation Arrow Right */}
         <button
           onClick={() => paginate(1)}
-          className="absolute right-2 sm:right-6 md:right-12 lg:right-20 top-1/2 -translate-y-1/2 z-40 w-10 sm:w-12 md:w-14 h-10 sm:h-12 md:h-14 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-lg group cursor-pointer"
+          className="absolute right-3 sm:right-6 md:right-10 lg:right-16 top-1/2 -translate-y-1/2 z-40 w-9 sm:w-11 md:w-13 h-9 sm:h-11 md:h-13 rounded-full bg-white/20 hover:bg-white/40 active:scale-90 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transition-all duration-200 shadow-lg group cursor-pointer"
           aria-label="Next Pie"
         >
           <ChevronRight className="w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
 
         {/* Outer Orbital Ring 1 */}
-        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[112vw] sm:w-[96vw] md:w-[780px] lg:w-[980px] xl:w-[1140px] aspect-square rounded-full border border-white/15 pointer-events-none z-10" />
+        <div className="absolute bottom-0 translate-y-[26%] sm:translate-y-[24%] md:translate-y-[22%] w-[min(108vw,82vh,890px)] aspect-square rounded-full border border-white/15 pointer-events-none z-10" />
 
-        {/* Primary Orbital Ring 2 (Holds the Active Indicator Dot with 100% accurate responsive pinning) */}
-        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[98vw] sm:w-[86vw] md:w-[680px] lg:w-[860px] xl:w-[980px] aspect-square rounded-full border border-white/25 pointer-events-none z-20">
+        {/* Primary Orbital Ring 2 (Holds the Active Indicator Dot & Orbit Labels) */}
+        <div className="absolute bottom-0 translate-y-[26%] sm:translate-y-[24%] md:translate-y-[22%] w-[min(94vw,70vh,760px)] aspect-square rounded-full border border-white/25 pointer-events-none z-20">
           
           {/* Active Dot Rotator (Centered to ring so dot stays locked to ring circumference across all screen sizes) */}
           <motion.div
@@ -198,15 +198,15 @@ export const PizzaShowcaseHero: React.FC = () => {
             }}
             transition={{ type: 'spring', stiffness: 120, damping: 20 }}
           >
-            <div className="w-3 sm:w-4 h-3 sm:h-4 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.95)] -translate-y-1/2" />
+            <div className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.95)] -translate-y-1/2" />
           </motion.div>
         </div>
 
         {/* Inner Orbital Ring 3 (Dashed) */}
-        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[84vw] sm:w-[74vw] md:w-[580px] lg:w-[740px] xl:w-[840px] aspect-square rounded-full border border-dashed border-white/20 pointer-events-none z-10" />
+        <div className="absolute bottom-0 translate-y-[26%] sm:translate-y-[24%] md:translate-y-[22%] w-[min(80vw,58vh,630px)] aspect-square rounded-full border border-dashed border-white/20 pointer-events-none z-10" />
 
         {/* 4 Flavor Text Labels Curved Along the Top Arch */}
-        <div className="absolute bottom-0 translate-y-[22%] sm:translate-y-[20%] md:translate-y-[18%] w-[98vw] sm:w-[86vw] md:w-[680px] lg:w-[860px] xl:w-[980px] aspect-square rounded-full pointer-events-none z-30">
+        <div className="absolute bottom-0 translate-y-[26%] sm:translate-y-[24%] md:translate-y-[22%] w-[min(94vw,70vh,760px)] aspect-square rounded-full pointer-events-none z-30">
           {FLAVORS.map((flavor, index) => {
             const isActive = index === currentIndex;
             return (
@@ -223,7 +223,7 @@ export const PizzaShowcaseHero: React.FC = () => {
                   style={{
                     transform: `rotate(${-flavor.angle}deg)`, // Counter-rotate text so it stays upright
                   }}
-                  className={`-translate-y-7 sm:-translate-y-9 md:-translate-y-11 pointer-events-auto cursor-pointer transition-all duration-300 font-display font-black tracking-widest uppercase text-[10px] sm:text-xs md:text-sm lg:text-base flex flex-col items-center gap-1 sm:gap-1.5 ${
+                  className={`-translate-y-6 sm:-translate-y-8 md:-translate-y-9 pointer-events-auto cursor-pointer transition-all duration-300 font-display font-black tracking-widest uppercase text-[9px] sm:text-xs md:text-sm flex flex-col items-center gap-1 sm:gap-1.5 ${
                     isActive
                       ? 'text-white scale-110 drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] font-black'
                       : 'text-white/65 hover:text-white hover:scale-105'
@@ -233,7 +233,7 @@ export const PizzaShowcaseHero: React.FC = () => {
                   {isActive && (
                     <motion.div
                       layoutId="activeOrbitDotPill"
-                      className="w-2.5 sm:w-3.5 h-2.5 sm:h-3.5 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+                      className="w-2 sm:w-3 h-2 sm:h-3 rounded-full bg-white shadow-[0_0_10px_rgba(255,255,255,0.9)]"
                       transition={{ type: 'spring', stiffness: 320, damping: 25 }}
                     />
                   )}
@@ -243,7 +243,7 @@ export const PizzaShowcaseHero: React.FC = () => {
           })}
         </div>
 
-        {/* Large Round Pie: Fully Responsive on Mobile, iPad, and Desktop */}
+        {/* Large Round Pie: Sized proportionately to Viewport Height */}
         <motion.div
           style={{
             rotateX: tiltX,
@@ -251,7 +251,7 @@ export const PizzaShowcaseHero: React.FC = () => {
             transformStyle: 'preserve-3d',
             perspective: 1000,
           }}
-          className="relative w-[78vw] sm:w-[68vw] md:w-[520px] lg:w-[680px] xl:w-[780px] aspect-square flex items-center justify-center translate-y-[20%] sm:translate-y-[18%] md:translate-y-[15%] z-20 cursor-grab active:cursor-grabbing touch-pan-y"
+          className="relative w-[min(74vw,54vh,580px)] aspect-square flex items-center justify-center translate-y-[24%] sm:translate-y-[22%] md:translate-y-[20%] z-20 cursor-grab active:cursor-grabbing touch-pan-y"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.25}
@@ -276,7 +276,7 @@ export const PizzaShowcaseHero: React.FC = () => {
               damping: 16,
               mass: 1,
             }}
-            className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center origin-center select-none"
+            className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center origin-center select-none shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
             style={{
               clipPath: 'circle(44% at 50% 50%)', // Completely excludes background checkerboard
             }}
@@ -299,7 +299,7 @@ export const PizzaShowcaseHero: React.FC = () => {
       </div>
 
       {/* 4. Bottom Controls Bar: Auto-Play Indicator + Step Indicator */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 pt-2">
+      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 shrink-0">
         <button
           onClick={() => setIsAutoPlay(!isAutoPlay)}
           className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-mono font-bold tracking-wider flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer"
