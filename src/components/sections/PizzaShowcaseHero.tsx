@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface FlavorItem {
   id: string;
@@ -73,7 +73,6 @@ const FLAVORS: FlavorItem[] = [
 export const PizzaShowcaseHero: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(1); // Start on ORANGE PIE
   const [rotationDegrees, setRotationDegrees] = useState(90);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -109,12 +108,12 @@ export const PizzaShowcaseHero: React.FC = () => {
 
   // Auto-play timer
   useEffect(() => {
-    if (!isAutoPlay || isDragging) return;
+    if (isDragging) return;
     const timer = setInterval(() => {
       paginate(1);
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
-  }, [isAutoPlay, isDragging, paginate]);
+  }, [isDragging, paginate]);
 
   // Mouse move handler (Desktop only)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -136,7 +135,7 @@ export const PizzaShowcaseHero: React.FC = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-[100dvh] min-h-[640px] max-h-[1080px] flex flex-col justify-between items-center overflow-hidden transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] select-none pt-20 sm:pt-22 md:pt-24 pb-4 sm:pb-6"
+      className="relative w-full h-[100dvh] min-h-[640px] max-h-[1080px] flex flex-col justify-between items-center overflow-hidden transition-colors duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] select-none pt-20 sm:pt-22 md:pt-24 pb-0"
       style={{ backgroundColor: activeFlavor.bgColor }}
       id="philosophy"
     >
@@ -296,21 +295,6 @@ export const PizzaShowcaseHero: React.FC = () => {
             </AnimatePresence>
           </motion.div>
         </motion.div>
-      </div>
-
-      {/* 4. Bottom Controls Bar: Auto-Play Indicator + Step Indicator */}
-      <div className="relative z-30 w-full max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 shrink-0">
-        <button
-          onClick={() => setIsAutoPlay(!isAutoPlay)}
-          className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-mono font-bold tracking-wider flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer"
-        >
-          {isAutoPlay ? <Pause className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> : <Play className="w-3 h-3 sm:w-3.5 sm:h-3.5" />}
-          <span>{isAutoPlay ? 'AUTOPLAY ON' : 'AUTOPLAY OFF'}</span>
-        </button>
-
-        <div className="font-mono text-[10px] sm:text-xs text-white/80 font-bold tracking-widest bg-white/15 px-3 py-1 sm:py-1.5 rounded-full border border-white/20 backdrop-blur-md">
-          {activeFlavor.flavorNumber} <span className="text-white/40">/ 04</span>
-        </div>
       </div>
     </section>
   );

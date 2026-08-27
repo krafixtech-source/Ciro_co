@@ -507,10 +507,10 @@ export const FullMenu: React.FC = () => {
                       </div>
                     ))}
 
-                    {/* Cursive Handwriting Quote under the list */}
+                    {/* Cursive Handwriting Quote under the list in Bristol Hand */}
                     {cat.quote && (
                       <div className="mt-4 pt-4 border-t border-dashed border-ciro-espresso/15 text-right">
-                        <p className="font-serif italic text-sm text-ciro-olive/90 leading-snug tracking-tight font-medium" style={{ fontFamily: 'Fraunces, cursive' }}>
+                        <p className="font-bristol text-lg md:text-xl text-ciro-espresso leading-snug tracking-normal">
                           "{cat.quote}"
                         </p>
                       </div>

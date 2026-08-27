@@ -98,6 +98,9 @@ export const Philosophy: React.FC = () => {
               <h2 className="font-serif italic font-extrabold text-5xl md:text-8xl uppercase mt-2 text-ciro-cream tracking-tight">
                 CUCINA
               </h2>
+              <span className="font-bristol text-2xl text-ciro-saffron mt-1 block -rotate-1">
+                ~ slow fermented dough & San Marzano tomatoes ~
+              </span>
               <p className="mt-6 font-sans font-bold text-lg md:text-xl text-ciro-cream/80 max-w-xl leading-relaxed">
                 Comforting, authentic, and unapologetic. Wood-fired sourdough pizzas, fresh hand-rolled pasta plates, and velvety tiramisu desserts—crafted using traditional Italian secrets.
               </p>
@@ -142,6 +145,9 @@ export const Philosophy: React.FC = () => {
               <h2 className="font-serif italic font-extrabold text-5xl md:text-8xl uppercase mt-2 tracking-tight">
                 CULTURE
               </h2>
+              <span className="font-bristol text-2xl text-ciro-olive mt-1 block -rotate-1">
+                ~ street-style masa & vibrant house salsas ~
+              </span>
               <p className="mt-6 font-sans font-bold text-lg md:text-xl text-ciro-espresso max-w-xl leading-relaxed">
                 Bold, energetic, and highly social. Vibrant plates of street tacos, zesty fresh salsas, loaded quesadillas, and cold drinks—infused with the colorful rhythm of Jaipur nights.
               </p>
@@ -162,6 +168,9 @@ export const Philosophy: React.FC = () => {
               <h2 className="font-serif italic font-extrabold text-5xl md:text-8xl uppercase mt-2 tracking-tight">
                 COFFEE
               </h2>
+              <span className="font-bristol text-2xl text-ciro-lime mt-1 block -rotate-1">
+                ~ artisanal beans & specialty manual brews ~
+              </span>
               <p className="mt-6 font-sans font-bold text-lg md:text-xl text-ciro-cream/90 max-w-xl leading-relaxed">
                 Slow mornings, long conversations, and custom single-origin bean roasts. Velvety cappuccinos, signature spiced lattes, and artisan drips—brewed for curators of coffee.
               </p>

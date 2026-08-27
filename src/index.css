@@ -1,5 +1,29 @@
-/* Import Custom Google Fonts for Ciro */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=Plus+Jakarta+Sans:wght@400..800&display=swap');
+/* 1. Import Montserrat & Rozha One from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rozha+One&display=swap');
+
+/* 2. Custom @font-face for Local & Bundled Fonts */
+@font-face {
+  font-family: 'Bristol Hand';
+  src: local('Bristol Hand Regular'),
+       local('Bristol-hand-regular'),
+       local('Bristol Hand'),
+       local('Bristol'),
+       url('/fonts/Bristol-hand-regular.otf') format('opentype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rozha One';
+  src: local('Rozha One Regular'),
+       local('RozhaOne-Regular'),
+       local('Rozha One'),
+       url('/fonts/RozhaOne-Regular.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @import "tailwindcss";
 
@@ -15,9 +39,14 @@
   --color-ciro-dark: #171512;
   --color-ciro-light: #FEF7EC;
 
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-display: "Bricolage Grotesque", sans-serif;
-  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-montserrat: "Montserrat", system-ui, -apple-system, sans-serif;
+  --font-display: "Rozha One", Georgia, serif;
+  --font-serif: "Rozha One", Georgia, serif;
+  --font-rozha: "Rozha One", Georgia, serif;
+  --font-bristol: "Bristol Hand", "Caveat", cursive;
+  --font-hand: "Bristol Hand", "Caveat", cursive;
+  --font-script: "Bristol Hand", cursive;
 
   --border-width-3: 3px;
   
@@ -31,12 +60,38 @@
 html, body {
   background-color: var(--color-ciro-cream);
   color: var(--color-ciro-dark);
-  font-family: var(--font-sans);
+  font-family: "Montserrat", system-ui, -apple-system, sans-serif;
+  font-weight: 500;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utility Overrides */
+.font-rozha {
+  font-family: 'Rozha One', Georgia, serif !important;
+}
+
+.font-bristol {
+  font-family: 'Bristol Hand', cursive !important;
+}
+
+.font-hand {
+  font-family: 'Bristol Hand', cursive !important;
+}
+
+.font-serif {
+  font-family: 'Rozha One', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Rozha One', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
 }
 
 /* Custom momentum scroll styling (Lenis) */

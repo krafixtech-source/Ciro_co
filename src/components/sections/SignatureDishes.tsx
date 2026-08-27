@@ -55,24 +55,23 @@ export const SignatureDishes: React.FC = () => {
   ];
 
   useEffect(() => {
-    // Scroll tilt animation for all cards
+    // Scroll tilt animation for all cards: start tilted and straighten to 0deg as they enter view, then stop
     const cards = gsap.utils.toArray('.dish-card-scroll');
     cards.forEach((card: any, idx: number) => {
-      // Alternate tilt direction: even cards tilt left-to-right, odd cards tilt right-to-left
-      const startTilt = idx % 2 === 0 ? -12 : 12;
-      const endTilt = idx % 2 === 0 ? 12 : -12;
-      
-      gsap.fromTo(card,
+      const startTilt = idx % 2 === 0 ? -6 : 6;
+
+      gsap.fromTo(
+        card,
         { rotate: startTilt },
         {
-          rotate: endTilt,
-          ease: 'none',
+          rotate: 0,
+          ease: 'power1.out',
           scrollTrigger: {
             trigger: card,
-            start: 'top bottom', // starts animating when card enters viewport
-            end: 'bottom top',   // ends when card leaves viewport
-            scrub: true,
-          }
+            start: 'top 95%',
+            end: 'center 55%',
+            scrub: 0.5,
+          },
         }
       );
     });
@@ -88,12 +87,15 @@ export const SignatureDishes: React.FC = () => {
       {/* Header */}
       <div className="max-w-7xl mx-auto w-full mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
         <div>
-          <span className="font-display font-black text-xs uppercase tracking-[0.25em] text-ciro-olive">
+          <span className="font-sans font-bold text-xs uppercase tracking-[0.25em] text-ciro-olive">
             CULINARY CURATION
           </span>
-          <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl uppercase mt-2 text-ciro-dark leading-none">
-            THE GOOD STUFF.
+          <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl mt-2 text-ciro-dark leading-none">
+            The Good Stuff.
           </h2>
+          <span className="font-bristol text-2xl text-ciro-olive block mt-2 -rotate-1">
+            Made with love, craft & fresh ingredients ~
+          </span>
         </div>
         <p className="font-sans font-medium text-lg text-ciro-espresso max-w-sm">
           A visual journey through our kitchen. Fresh, colorful, and prepared with pure culinary excitement daily.
@@ -105,13 +107,12 @@ export const SignatureDishes: React.FC = () => {
         {dishes.map((dish, i) => (
           <div
             key={dish.id}
-            className={`flex flex-col w-full max-w-lg mx-auto ${
-              i % 2 === 1 ? 'md:translate-y-24' : ''
-            }`}
+            className={`flex flex-col w-full max-w-lg mx-auto ${i % 2 === 1 ? 'md:translate-y-24' : ''
+              }`}
           >
             {/* Clean image container that will tilt on scroll */}
             <div className="dish-card-scroll w-full flex flex-col group cursor-pointer origin-center">
-              
+
               {/* Image with rounded corners and no frame/shadow */}
               <div className={`w-full ${dish.aspectClass} overflow-hidden rounded-[32px] bg-ciro-dark/5 relative`}>
                 <img

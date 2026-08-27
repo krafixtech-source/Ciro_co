@@ -56,10 +56,10 @@ export const ItalianMexican: React.FC = () => {
         <span className="font-display font-black text-xs uppercase tracking-[0.25em] text-ciro-olive">
           THE SIGNATURE COLLISION
         </span>
-        <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl uppercase mt-2 leading-none">
-          ONE TABLE.
+        <h2 className="font-serif italic font-extrabold text-5xl md:text-7xl mt-2 leading-none">
+          One Table.
           <br />
-          TWO WORLDS.
+          Two Worlds.
         </h2>
       </div>
 
@@ -71,7 +71,7 @@ export const ItalianMexican: React.FC = () => {
           ref={leftRef}
           className="w-[45vw] h-[60vh] -translate-x-[40%] flex justify-end items-center pr-4 md:pr-12 relative z-10"
         >
-          <div className="w-full max-w-[340px] aspect-square bg-ciro-lime border-3 border-ciro-dark shadow-retro p-2 rotate-[-4deg] overflow-hidden">
+          <div className="w-full max-w-[340px] aspect-square bg-ciro-lime border-3 border-ciro-dark p-2 rotate-[-4deg] overflow-hidden">
             <div className="w-full h-full bg-ciro-dark/10 border-2 border-ciro-dark relative">
               <img
                 src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80"
@@ -89,7 +89,7 @@ export const ItalianMexican: React.FC = () => {
         {/* Center collision indicator */}
         <div
           ref={centerRef}
-          className="w-20 h-20 md:w-32 md:h-32 rounded-full border-3 border-ciro-dark bg-ciro-olive shadow-retro-lg flex items-center justify-center font-display font-black text-4xl md:text-6xl text-ciro-light relative z-20 scale-0 origin-center"
+          className="w-9 h-9 md:w-12 md:h-12 rounded-full border-2 border-ciro-dark bg-ciro-olive flex items-center justify-center font-display font-black text-base md:text-xl text-ciro-light relative z-20 scale-0 origin-center"
         >
           ×
         </div>
@@ -99,7 +99,7 @@ export const ItalianMexican: React.FC = () => {
           ref={rightRef}
           className="w-[45vw] h-[60vh] translate-x-[40%] flex justify-start items-center pl-4 md:pl-12 relative z-10"
         >
-          <div className="w-full max-w-[340px] aspect-square bg-ciro-orange border-3 border-ciro-dark shadow-retro p-2 rotate-[4deg] overflow-hidden">
+          <div className="w-full max-w-[340px] aspect-square bg-ciro-orange border-3 border-ciro-dark p-2 rotate-[4deg] overflow-hidden">
             <div className="w-full h-full bg-ciro-dark/10 border-2 border-ciro-dark relative">
               <img
                 src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80"

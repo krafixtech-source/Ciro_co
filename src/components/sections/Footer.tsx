@@ -67,6 +67,9 @@ export const Footer: React.FC = () => {
 
       {/* Massive Sign-off */}
       <div className="max-w-7xl mx-auto w-full mt-20 border-t border-ciro-dark/5 pt-12 relative z-10 select-none text-center">
+        <span className="font-bristol text-3xl md:text-4xl text-ciro-olive block mb-2 -rotate-2">
+          Come hungry, leave inspired ~
+        </span>
         <h1 className="font-serif italic font-extrabold text-[12vw] leading-none uppercase tracking-tighter text-ciro-dark/[0.04] hover:text-ciro-olive transition-colors duration-1000">
           SEE YOU AT CIRO.
         </h1>

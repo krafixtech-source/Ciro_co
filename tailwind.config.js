@@ -20,9 +20,14 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Bricolage Grotesque"', 'sans-serif'],
-        serif: ['"Fraunces"', 'Georgia', 'serif'],
+        sans: ['"Montserrat"', 'system-ui', '-apple-system', 'sans-serif'],
+        montserrat: ['"Montserrat"', 'system-ui', '-apple-system', 'sans-serif'],
+        rozha: ['"Rozha One"', 'Georgia', 'serif'],
+        serif: ['"Rozha One"', 'Georgia', 'serif'],
+        display: ['"Rozha One"', 'Georgia', 'serif'],
+        bristol: ['"Bristol Hand"', '"Caveat"', 'cursive'],
+        hand: ['"Bristol Hand"', '"Caveat"', 'cursive'],
+        script: ['"Bristol Hand"', 'cursive'],
       },
       borderWidth: {
         '3': '3px',

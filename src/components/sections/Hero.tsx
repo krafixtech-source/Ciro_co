@@ -272,9 +272,9 @@ export const Hero: React.FC = () => {
         >
           <h1
             ref={titleRef}
-            className="hero-text-anim opacity-0 font-serif font-normal text-[6.5vw] md:text-[4vw] leading-[1.15] tracking-tight text-ciro-olive"
+            className="hero-text-anim opacity-0 font-serif font-normal text-[5.5vw] md:text-[3.6vw] lg:text-[3.8vw] leading-[1.15] tracking-tight text-ciro-olive"
           >
-            Italian Heart. Mexican Soul.
+            <span className="whitespace-nowrap">Italian Heart. Mexican Soul.</span>
             <br />
             <span className="italic">Jaipur Energy.</span>
           </h1>
@@ -282,10 +282,10 @@ export const Hero: React.FC = () => {
           <a
             ref={btnRef}
             href="#menu"
-            className="hero-text-anim opacity-0 mt-8 bg-[#F5D17B] text-ciro-dark px-8 py-3.5 rounded-full font-display font-extrabold text-xs uppercase tracking-widest hover:scale-105 hover:bg-[#F3C45C] transition-all duration-200 relative z-30"
+            className="hero-text-anim opacity-0 mt-4 md:mt-5 bg-[#F5D17B] text-ciro-dark px-9 py-2 rounded-full font-bristol text-2xl md:text-3xl tracking-wide hover:scale-105 hover:bg-[#F3C45C] transition-all duration-200 relative z-30 inline-flex items-center justify-center -rotate-1 hover:rotate-0"
             data-cursor="view"
           >
-            Explore the Menu
+            Explore
           </a>
         </div>
 
