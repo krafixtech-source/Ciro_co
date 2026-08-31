@@ -10,6 +10,7 @@ import ItalianMexican from './components/sections/ItalianMexican';
 import CustardUbeEditorial from './components/sections/CustardUbeEditorial';
 import WideVideoSection from './components/sections/WideVideoSection';
 import SignatureDishes from './components/sections/SignatureDishes';
+import CinematicDrinks from './components/sections/CinematicDrinks';
 import MenuPreview from './components/sections/MenuPreview';
 import FoodCinema from './components/sections/FoodCinema';
 import CoffeeCulture from './components/sections/CoffeeCulture';
@@ -149,6 +150,10 @@ export const App: React.FC = () => {
 
             {/* FOOD - Signature showcases & Menu previews */}
             <SignatureDishes />
+
+            {/* CINEMATIC DRINKS SHOWCASE */}
+            <CinematicDrinks />
+
             <MenuPreview />
 
             {/* FOOD CINEMA - toss, stretch, blend */}
