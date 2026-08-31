@@ -48,7 +48,7 @@ export const CustardUbeEditorial: React.FC = () => {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full h-[440px] sm:h-[500px] md:h-[550px] overflow-hidden flex items-center justify-center select-none border-y-3 border-ciro-dark"
+      className="relative w-full h-[440px] sm:h-[500px] md:h-[550px] overflow-hidden flex items-center justify-center select-none border-t-3 border-ciro-dark"
       style={{
         backgroundColor: '#723385', // Rich, vibrant royal purple
       }}

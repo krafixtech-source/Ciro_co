@@ -41,7 +41,7 @@ const LeftLeafDecoration: React.FC = () => (
     {/* Top leaf */}
     <path
       d="M 120 70 C 110 40 120 20 140 30 C 160 40 145 65 120 70 Z"
-      fill="#A8C84A"
+      fill="#F0DEAF"
     />
 
     {/* Floating cream/beige seed shapes */}
@@ -96,7 +96,7 @@ const RightLeafDecoration: React.FC = () => (
     {/* Bottom leaf */}
     <path
       d="M 120 250 C 130 280 120 300 100 290 C 80 280 95 255 120 250 Z"
-      fill="#A8C84A"
+      fill="#F0DEAF"
     />
 
     {/* Floating cream/beige seed shapes */}
@@ -282,7 +282,7 @@ export const Hero: React.FC = () => {
           <a
             ref={btnRef}
             href="#menu"
-            className="hero-text-anim opacity-0 mt-4 md:mt-5 bg-[#F5D17B] text-ciro-dark px-9 py-2 rounded-full font-bristol text-2xl md:text-3xl tracking-wide hover:scale-105 hover:bg-[#F3C45C] transition-all duration-200 relative z-30 inline-flex items-center justify-center -rotate-1 hover:rotate-0"
+            className="hero-text-anim opacity-0 mt-4 md:mt-5 bg-[#829475] text-white px-9 py-2 rounded-full font-bristol text-2xl md:text-3xl tracking-wide hover:scale-105 hover:bg-[#718264] transition-all duration-200 relative z-30 inline-flex items-center justify-center -rotate-1 hover:rotate-0"
             data-cursor="view"
           >
             Explore

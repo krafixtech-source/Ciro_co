@@ -122,7 +122,7 @@ export const ItalianMexican: React.FC = () => {
         className="relative z-10 text-center mb-12 opacity-0 transform translate-y-12"
       >
         <span className="font-display font-black text-xs uppercase tracking-widest text-ciro-espresso">
-          AND A LITTLE
+          Best Pizzas' And Taccos'
         </span>
         <h3 className="font-serif italic font-extrabold text-4xl md:text-6xl text-ciro-olive uppercase mt-1">
           JAIPUR.
