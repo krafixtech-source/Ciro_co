@@ -112,7 +112,7 @@ export const MenuPreview: React.FC = () => {
 
   return (
     <section
-      className={`relative w-full min-h-screen py-24 px-6 md:px-12 flex flex-col justify-between border-b-3 border-ciro-dark transition-colors duration-700 ease-in-out ${currentCategory.bgColorClass} ${currentCategory.textColorClass}`}
+      className={`relative w-full min-h-screen py-24 px-6 md:px-12 flex flex-col justify-between transition-colors duration-700 ease-in-out ${currentCategory.bgColorClass} ${currentCategory.textColorClass}`}
       id="menu"
     >
       <div className={`absolute inset-0 ${currentCategory.textColorClass === 'text-ciro-cream' ? 'bg-grid-dots-light' : 'bg-grid-dots'} opacity-5 pointer-events-none`} />

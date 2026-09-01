@@ -20,11 +20,11 @@ export const TheSpace: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const photos: SpacePhoto[] = [
-    { id: 'sp-1', caption: 'MORNING LIGHT', imgUrl: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[-2deg]', offsetClass: 'md:translate-y-4', imageSlotId: 'interior01' },
-    { id: 'sp-2', caption: 'LONG LUNCHES', imgUrl: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=80', aspectClass: 'aspect-square', rotateClass: 'rotate-[3deg]', offsetClass: 'md:-translate-y-8', imageSlotId: 'interior02' },
-    { id: 'sp-3', caption: 'LATE COFFEE', imgUrl: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80', aspectClass: 'aspect-[4/3]', rotateClass: 'rotate-[-1deg]', offsetClass: 'md:translate-y-12', imageSlotId: 'interior03' },
-    { id: 'sp-4', caption: 'GOOD MUSIC', imgUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[2deg]', offsetClass: 'md:-translate-y-4', imageSlotId: 'people01' },
-    { id: 'sp-5', caption: 'JAIPUR NIGHTS', imgUrl: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=600&q=80', aspectClass: 'aspect-square', rotateClass: 'rotate-[-3deg]', offsetClass: 'md:translate-y-6', imageSlotId: 'people02' },
+    { id: 'sp-1', caption: 'THE FAÇADE', imgUrl: '/assets/space/facade.jpg', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[-2deg]', offsetClass: 'md:translate-y-4', imageSlotId: 'facade01' },
+    { id: 'sp-2', caption: 'INDOOR DINING', imgUrl: '/assets/space/dining.jpg', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[3deg]', offsetClass: 'md:-translate-y-8', imageSlotId: 'dining01' },
+    { id: 'sp-3', caption: 'OPEN KITCHEN', imgUrl: '/assets/space/kitchen.jpg', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[-1deg]', offsetClass: 'md:translate-y-12', imageSlotId: 'kitchen01' },
+    { id: 'sp-4', caption: 'COFFEE BAR', imgUrl: '/assets/space/coffee_bar.jpg', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[2deg]', offsetClass: 'md:-translate-y-4', imageSlotId: 'coffeebar01' },
+    { id: 'sp-5', caption: 'OUTDOOR PATIO', imgUrl: '/assets/space/patio.jpg', aspectClass: 'aspect-[3/4]', rotateClass: 'rotate-[-3deg]', offsetClass: 'md:translate-y-6', imageSlotId: 'patio01' },
   ];
 
   useEffect(() => {

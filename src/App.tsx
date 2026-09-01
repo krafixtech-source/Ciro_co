@@ -12,7 +12,6 @@ import WideVideoSection from './components/sections/WideVideoSection';
 import SignatureDishes from './components/sections/SignatureDishes';
 import CinematicDrinks from './components/sections/CinematicDrinks';
 import MenuPreview from './components/sections/MenuPreview';
-import FoodCinema from './components/sections/FoodCinema';
 import CoffeeCulture from './components/sections/CoffeeCulture';
 import TheSpace from './components/sections/TheSpace';
 import Jaipur from './components/sections/Jaipur';
@@ -155,9 +154,6 @@ export const App: React.FC = () => {
             <CinematicDrinks />
 
             <MenuPreview />
-
-            {/* FOOD CINEMA - toss, stretch, blend */}
-            <FoodCinema />
 
             {/* COFFEE - beans, repeat, strip */}
             <CoffeeCulture />

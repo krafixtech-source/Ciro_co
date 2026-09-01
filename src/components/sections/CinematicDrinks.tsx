@@ -41,7 +41,6 @@ const drinksData: DrinkItem[] = [
 ];
 
 export const CinematicDrinks: React.FC = () => {
-  const triggerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // References for GSAP animations
@@ -63,7 +62,6 @@ export const CinematicDrinks: React.FC = () => {
 
   useEffect(() => {
     if (
-      !triggerRef.current ||
       !containerRef.current ||
       !bgYellowRef.current ||
       !drink1WrapperRef.current ||
@@ -76,6 +74,8 @@ export const CinematicDrinks: React.FC = () => {
       !text3SlowRef.current
     )
       return;
+
+    const mm = gsap.matchMedia();
 
     // 1. Idle Floating Animations
     const float1 = gsap.to(drink1WrapperRef.current, {
@@ -106,189 +106,176 @@ export const CinematicDrinks: React.FC = () => {
       ease: 'power1.inOut',
     });
 
-    // 2. Main Pinned Scroll Timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        pin: true,
-        scrub: 1.5,
-        start: 'top top',
-        end: '+=300%', // 4 screens worth of content
-        invalidateOnRefresh: true,
-      },
+    // 2. Main Pinned Scroll Timeline for Desktop / Tablet
+    mm.add('(min-width: 768px)', () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          pin: true,
+          scrub: 1.2,
+          start: 'top top',
+          end: '+=140%',
+          invalidateOnRefresh: true,
+        },
+      });
+
+      tl
+        // === PART 1: Subtle push-in ===
+        .to(drink1WrapperRef.current, {
+          scale: 1.03,
+          duration: 1,
+          ease: 'none',
+        }, 0)
+        .to(part1LeftRef.current, {
+          y: '-10',
+          duration: 1,
+          ease: 'none',
+        }, 0)
+
+        // === TRANSITION 1: Drink 1 -> Drink 2 ===
+        .to(part1LeftRef.current, {
+          x: '-30vw',
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power2.inOut',
+        }, 1)
+        .to(drink1WrapperRef.current, {
+          x: '-60vw',
+          scale: 1.25,
+          filter: 'blur(16px)',
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.inOut',
+        }, 1)
+
+        .fromTo(drink2WrapperRef.current, {
+          x: '60vw',
+          scale: 0.75,
+          filter: 'blur(20px)',
+          opacity: 0,
+        }, {
+          x: '0vw',
+          scale: 1,
+          filter: 'blur(0px)',
+          opacity: 1,
+          duration: 1.8,
+          ease: 'power2.out',
+        }, 1.2)
+        .fromTo(part2RightRef.current, {
+          x: '40',
+          opacity: 0,
+        }, {
+          x: '0',
+          opacity: 1,
+          duration: 1.4,
+          ease: 'power2.out',
+        }, 1.5)
+
+        // === TRANSITION 2: Drink 2 -> Drink 3 ===
+        .to(drink2WrapperRef.current, {
+          x: '-60vw',
+          scale: 1.25,
+          filter: 'blur(16px)',
+          opacity: 0,
+          duration: 1.5,
+          ease: 'power2.inOut',
+        }, 2.5)
+        .to(part2RightRef.current, {
+          x: '-30vw',
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power2.inOut',
+        }, 2.5)
+        .to(bgYellowRef.current, {
+          opacity: 1,
+          duration: 1.5,
+          ease: 'power2.inOut',
+        }, 2.5)
+
+        .fromTo(drink3WrapperRef.current, {
+          x: '60vw',
+          scale: 0.75,
+          filter: 'blur(20px)',
+          opacity: 0,
+        }, {
+          x: '0vw',
+          scale: 1,
+          filter: 'blur(0px)',
+          opacity: 1,
+          duration: 1.8,
+          ease: 'power2.out',
+        }, 2.7)
+        .fromTo(drink3CircleRef.current, {
+          scale: 0.8,
+          opacity: 0,
+        }, {
+          scale: 1,
+          opacity: 1,
+          duration: 1.6,
+          ease: 'power2.out',
+        }, 2.8)
+
+        .fromTo(text3SipRef.current, {
+          opacity: 0,
+          x: '-80',
+        }, {
+          opacity: 1,
+          x: '0',
+          duration: 1.4,
+          ease: 'power2.out',
+        }, 3.0)
+        .fromTo(text3SlowRef.current, {
+          opacity: 0,
+          x: '80',
+        }, {
+          opacity: 1,
+          x: '0',
+          duration: 1.4,
+          ease: 'power2.out',
+        }, 3.1)
+
+        // === PART 3: Drink 3 Hero state push-in and parallax typography ===
+        .to(drink3WrapperRef.current, {
+          scale: 1.06,
+          duration: 1.2,
+          ease: 'none',
+        }, 4.2)
+        .to(drink3CircleRef.current, {
+          scale: 1.04,
+          duration: 1.2,
+          ease: 'none',
+        }, 4.2)
+        .to(text3SipRef.current, {
+          x: '-15',
+          scale: 1.02,
+          duration: 1.2,
+          ease: 'none',
+        }, 4.2)
+        .to(text3SlowRef.current, {
+          x: '15',
+          scale: 1.02,
+          duration: 1.2,
+          ease: 'none',
+        }, 4.2);
     });
-
-    tl
-      // === PART 1: Subtle push-in ===
-      .to(drink1WrapperRef.current, {
-        scale: 1.03,
-        duration: 1,
-        ease: 'none',
-      }, 0)
-      .to(part1LeftRef.current, {
-        y: '-10',
-        duration: 1,
-        ease: 'none',
-      }, 0)
-
-      // === TRANSITION 1: Drink 1 -> Drink 2 ===
-      // Part 1 Left column (Title & Button) slides out left and fades
-      .to(part1LeftRef.current, {
-        x: '-30vw',
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power2.inOut',
-      }, 1)
-      // Drink 1 scales up, blurs, and slides left out of frame
-      .to(drink1WrapperRef.current, {
-        x: '-60vw',
-        scale: 1.25,
-        filter: 'blur(16px)',
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.inOut',
-      }, 1)
-
-      // Drink 2 enters: slides in from right to Left Column, scales up, and comes into focus
-      .fromTo(drink2WrapperRef.current, {
-        x: '60vw',
-        scale: 0.75,
-        filter: 'blur(20px)',
-        opacity: 0,
-      }, {
-        x: '0vw',
-        scale: 1,
-        filter: 'blur(0px)',
-        opacity: 1,
-        duration: 1.8,
-        ease: 'power2.out',
-      }, 1.2)
-      // Part 2 Right column description text fades and slides in from right
-      .fromTo(part2RightRef.current, {
-        x: '40',
-        opacity: 0,
-      }, {
-        x: '0',
-        opacity: 1,
-        duration: 1.4,
-        ease: 'power2.out',
-      }, 1.5)
-
-      // === TRANSITION 2: Drink 2 -> Drink 3 ===
-      // Drink 2 scales up, blurs, and slides left out of frame
-      .to(drink2WrapperRef.current, {
-        x: '-60vw',
-        scale: 1.25,
-        filter: 'blur(16px)',
-        opacity: 0,
-        duration: 1.5,
-        ease: 'power2.inOut',
-      }, 2.5)
-      // Part 2 Right column description slides left and fades out
-      .to(part2RightRef.current, {
-        x: '-30vw',
-        opacity: 0,
-        duration: 1.2,
-        ease: 'power2.inOut',
-      }, 2.5)
-      // Background crossfades from Cream to Bright Saffron Yellow
-      .to(bgYellowRef.current, {
-        opacity: 1,
-        duration: 1.5,
-        ease: 'power2.inOut',
-      }, 2.5)
-
-      // Drink 3 enters: slides in from right to center, scales up, and comes into focus
-      .fromTo(drink3WrapperRef.current, {
-        x: '60vw',
-        scale: 0.75,
-        filter: 'blur(20px)',
-        opacity: 0,
-      }, {
-        x: '0vw',
-        scale: 1,
-        filter: 'blur(0px)',
-        opacity: 1,
-        duration: 1.8,
-        ease: 'power2.out',
-      }, 2.7)
-      // Background Cream Circle behind Drink 3 fades and scales in
-      .fromTo(drink3CircleRef.current, {
-        scale: 0.8,
-        opacity: 0,
-      }, {
-        scale: 1,
-        opacity: 1,
-        duration: 1.6,
-        ease: 'power2.out',
-      }, 2.8)
-
-      // Part 3 bold flanking typography fades and slides into positions flanking Drink 3
-      .fromTo(text3SipRef.current, {
-        opacity: 0,
-        x: '-80',
-      }, {
-        opacity: 1,
-        x: '0',
-        duration: 1.4,
-        ease: 'power2.out',
-      }, 3.0)
-      .fromTo(text3SlowRef.current, {
-        opacity: 0,
-        x: '80',
-      }, {
-        opacity: 1,
-        x: '0',
-        duration: 1.4,
-        ease: 'power2.out',
-      }, 3.1)
-
-      // === PART 3: Drink 3 Hero state push-in and parallax typography ===
-      .to(drink3WrapperRef.current, {
-        scale: 1.06,
-        duration: 1.2,
-        ease: 'none',
-      }, 4.2)
-      .to(drink3CircleRef.current, {
-        scale: 1.04,
-        duration: 1.2,
-        ease: 'none',
-      }, 4.2)
-      .to(text3SipRef.current, {
-        x: '-15',
-        scale: 1.02,
-        duration: 1.2,
-        ease: 'none',
-      }, 4.2)
-      .to(text3SlowRef.current, {
-        x: '15',
-        scale: 1.02,
-        duration: 1.2,
-        ease: 'none',
-      }, 4.2);
 
     return () => {
       float1.kill();
       float2.kill();
       float3.kill();
-      tl.kill();
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === triggerRef.current) {
-          st.kill();
-        }
-      });
+      mm.revert();
     };
   }, []);
 
   return (
-    <div ref={triggerRef} className="w-full relative h-[400vh] bg-ciro-light">
+    <div className="w-full relative bg-ciro-light">
       
       {/* ============================================================ */}
       {/* DESKTOP / TABLET PINNED INTERACTIVE EXPERIENCE               */}
       {/* ============================================================ */}
       <div
         ref={containerRef}
-        className="hidden md:block w-full h-screen sticky top-0 overflow-hidden select-none bg-[#FEF7EC]"
+        className="hidden md:block w-full h-screen relative overflow-hidden select-none bg-[#FEF7EC] border-b-3 border-ciro-dark"
       >
         
         {/* Yellow closing background overlay */}

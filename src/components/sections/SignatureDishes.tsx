@@ -141,8 +141,8 @@ export const SignatureDishes: React.FC = () => {
         ))}
       </div>
 
-      {/* Spacer matching irregular columns */}
-      <div className="h-24 md:h-48" />
+      {/* Section Bottom Clearance */}
+      <div className="h-4 md:h-8" />
     </section>
   );
 };
