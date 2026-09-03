@@ -462,7 +462,7 @@ export const CinematicDrinks: React.FC = () => {
 
         {/* Vertical stacked drink cards */}
         <div className="flex flex-col gap-10">
-          {drinksData.map((drink, index) => (
+          {drinksData.map((drink) => (
             <div
               key={drink.id}
               className="flex flex-col items-center bg-[#FEF7EC]/60 border border-ciro-dark/15 rounded-[32px] p-6 shadow-sm relative overflow-hidden"
