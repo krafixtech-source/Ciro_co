@@ -309,7 +309,7 @@ export const CinematicDrinks: React.FC = () => {
               Fresh pours, bold flavours.
             </p>
             <a
-              href="#menu"
+              href="#drinks-menu"
               className="bg-[#F5D17B] text-ciro-dark px-8 py-3 rounded-full font-sans font-bold text-sm uppercase tracking-wider mt-6 hover:scale-105 transition-all duration-200 shadow-sm border border-ciro-dark/10"
             >
               Explore More

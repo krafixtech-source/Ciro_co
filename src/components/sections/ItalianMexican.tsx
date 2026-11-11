@@ -94,7 +94,7 @@ export const ItalianMexican: React.FC = () => {
           ×
         </div>
 
-        {/* Right Side (Mexican): Starts shifted right */}
+        {/* Right Side: Starts shifted right */}
         <div
           ref={rightRef}
           className="w-[45vw] h-[60vh] translate-x-[40%] flex justify-start items-center pl-4 md:pl-12 relative z-10"
@@ -102,13 +102,13 @@ export const ItalianMexican: React.FC = () => {
           <div className="w-full max-w-[340px] aspect-square bg-ciro-orange border-3 border-ciro-dark p-2 rotate-[4deg] overflow-hidden">
             <div className="w-full h-full bg-ciro-dark/10 border-2 border-ciro-dark relative">
               <img
-                src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=600&q=80"
-                alt="Mexican Tacos Platter"
+                src="/assets/tiramisu_latte.jpg"
+                alt="Mocha Tiramisu Latte"
                 className="w-full h-full object-cover"
                 id="mexicanFood02"
               />
               <div className="absolute bottom-4 right-4 bg-ciro-cream border-2 border-ciro-dark px-3 py-1 font-display font-black text-[9px] uppercase tracking-wider text-ciro-dark">
-                TACOS / SALSA / LIMÓN
+                MOCHA / TIRAMISU / LATTE
               </div>
             </div>
           </div>

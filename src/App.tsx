@@ -25,12 +25,24 @@ export const App: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash);
   const lenisRef = useRef<Lenis | null>(null);
 
+  const isMenuRoute = (hash: string) => {
+    return (
+      hash === '#full-menu' ||
+      hash === '#menu' ||
+      hash === '#drinks-menu' ||
+      hash === '#beverage-menu' ||
+      hash.startsWith('#drinks') ||
+      hash.startsWith('#beverage') ||
+      hash.startsWith('#full-menu')
+    );
+  };
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
 
       // 1. If entering the menu page, kill homepage ScrollTriggers to clean up pins
-      if (hash === '#full-menu') {
+      if (isMenuRoute(hash)) {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         ScrollTrigger.clearScrollMemory();
       }
@@ -39,7 +51,7 @@ export const App: React.FC = () => {
       setCurrentHash(hash);
 
       // 3. Reset scroll only for top level routes (#full-menu or home)
-      if (hash === '#full-menu' || hash === '' || hash === '#') {
+      if (isMenuRoute(hash) || hash === '' || hash === '#') {
         window.scrollTo(0, 0);
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
@@ -92,8 +104,8 @@ export const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Whenever currentHash points to a home anchor (not full-menu), wait for mount and scroll smoothly
-    if (currentHash && currentHash !== '#full-menu') {
+    // Whenever currentHash points to a home anchor (not menu route), wait for mount and scroll smoothly
+    if (currentHash && !isMenuRoute(currentHash)) {
       const targetId = currentHash.replace('#', '');
       const timer = setTimeout(() => {
         const element = document.getElementById(targetId);
@@ -110,7 +122,8 @@ export const App: React.FC = () => {
     }
   }, [currentHash]);
 
-  const isMenuPage = currentHash === '#full-menu';
+  const isMenuPage = isMenuRoute(currentHash);
+  const isDrinksInitial = currentHash.startsWith('#drinks') || currentHash.startsWith('#beverage');
 
   return (
     <div className="relative min-h-screen bg-ciro-cream font-sans overflow-x-hidden selection-bg">
@@ -126,7 +139,7 @@ export const App: React.FC = () => {
       {/* 4. Core Storytelling Sections Sequence */}
       <main>
         {isMenuPage ? (
-          <FullMenu />
+          <FullMenu initialMode={isDrinksInitial ? 'drinks' : 'food'} />
         ) : (
           <>
             {/* ARRIVE */}

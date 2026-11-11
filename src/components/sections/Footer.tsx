@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
             NAVIGATION
           </h4>
           <div className="flex flex-col gap-2 font-display font-extrabold text-sm uppercase tracking-wider">
-            <a href="#menu" className="hover:text-ciro-olive transition-colors duration-300">Menu</a>
+            <a href="#full-menu" className="hover:text-ciro-olive transition-colors duration-300">Menu</a>
             <a href="#about" className="hover:text-ciro-olive transition-colors duration-300">About</a>
             <a href="#philosophy" className="hover:text-ciro-olive transition-colors duration-300">Experience</a>
             <a href="#reserve" className="hover:text-ciro-olive transition-colors duration-300">Reserve</a>
