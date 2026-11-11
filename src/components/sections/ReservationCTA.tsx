@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { submitReservation } from '../../services/reservationService';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,12 +10,14 @@ export const ReservationCTA: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     guests: '2',
     vibe: 'both',
     date: '',
     time: '7:30 PM',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
 
   useEffect(() => {
@@ -48,17 +51,19 @@ export const ReservationCTA: React.FC = () => {
     const fieldMap: Record<string, string> = {
       'res-name': 'name',
       'res-phone': 'phone',
+      'res-email': 'email',
       'res-guests': 'guests',
       'res-vibe': 'vibe',
       'res-date': 'date',
       'res-time': 'time',
     };
-    setFormData(prev => ({ ...prev, [fieldMap[id]]: value }));
-    // Clear error
-    setErrors(prev => ({ ...prev, [fieldMap[id]]: '' }));
+    if (fieldMap[id]) {
+      setFormData(prev => ({ ...prev, [fieldMap[id]]: value }));
+      setErrors(prev => ({ ...prev, [fieldMap[id]]: '' }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: Record<string, string> = {};
 
@@ -67,8 +72,12 @@ export const ReservationCTA: React.FC = () => {
     }
 
     const phoneRegex = /^[6-9]\d{9}$/;
-    if (!formData.phone || !phoneRegex.test(formData.phone)) {
+    if (!formData.phone || !phoneRegex.test(formData.phone.trim())) {
       newErrors.phone = 'Please enter a valid 10-digit number.';
+    }
+
+    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = 'Please enter a valid email.';
     }
 
     if (!formData.date) {
@@ -85,15 +94,16 @@ export const ReservationCTA: React.FC = () => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-    } else {
-      // Mock db write
-      try {
-        const bookings = JSON.parse(localStorage.getItem('ciroco_bookings') || '[]');
-        bookings.push({ ...formData, timestamp: new Date() });
-        localStorage.setItem('ciroco_bookings', JSON.stringify(bookings));
-      } catch (err) {
-        console.error(err);
-      }
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await submitReservation(formData);
+    } catch (err) {
+      console.error('Reservation submission error:', err);
+    } finally {
+      setIsSubmitting(false);
       setBookingSuccess(true);
     }
   };
@@ -104,6 +114,7 @@ export const ReservationCTA: React.FC = () => {
       ...prev,
       name: '',
       phone: '',
+      email: '',
       guests: '2',
       vibe: 'both',
     }));
@@ -161,10 +172,16 @@ export const ReservationCTA: React.FC = () => {
             
             {!bookingSuccess ? (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
-                <h3 className="font-serif italic font-extrabold text-2xl border-b border-ciro-dark/20 pb-4 mb-2 uppercase">
-                  Reserve Table
-                </h3>
+                <div className="flex items-center justify-between border-b border-ciro-dark/20 pb-4 mb-2">
+                  <h3 className="font-serif italic font-extrabold text-2xl uppercase">
+                    Reserve Table
+                  </h3>
+                  <span className="font-display font-black text-[9px] uppercase tracking-widest bg-ciro-olive/10 text-ciro-olive px-2.5 py-1 rounded border border-ciro-olive/20">
+                    INSTANT NOTIFY
+                  </span>
+                </div>
 
+                {/* Full Name */}
                 <div className="flex flex-col gap-1">
                   <label htmlFor="res-name" className="font-display font-extrabold text-[10px] uppercase tracking-wider">Full Name</label>
                   <input
@@ -178,19 +195,39 @@ export const ReservationCTA: React.FC = () => {
                   {errors.name && <span className="text-[10px] font-extrabold text-ciro-orange uppercase">{errors.name}</span>}
                 </div>
 
-                <div className="flex flex-col gap-1">
-                  <label htmlFor="res-phone" className="font-display font-extrabold text-[10px] uppercase tracking-wider">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="res-phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-ciro-dark bg-ciro-light font-sans font-bold text-xs uppercase tracking-wider outline-none focus:bg-white focus:border-ciro-olive"
-                    placeholder="10-digit mobile"
-                  />
-                  {errors.phone && <span className="text-[10px] font-extrabold text-ciro-orange uppercase">{errors.phone}</span>}
+                {/* Phone & Email Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="res-phone" className="font-display font-extrabold text-[10px] uppercase tracking-wider">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="res-phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border-2 border-ciro-dark bg-ciro-light font-sans font-bold text-xs uppercase tracking-wider outline-none focus:bg-white focus:border-ciro-olive"
+                      placeholder="10-digit mobile"
+                    />
+                    {errors.phone && <span className="text-[10px] font-extrabold text-ciro-orange uppercase">{errors.phone}</span>}
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="res-email" className="font-display font-extrabold text-[10px] uppercase tracking-wider flex items-center justify-between">
+                      <span>Email</span>
+                      <span className="text-[9px] text-ciro-dark/50 normal-case font-mono font-normal">Optional</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="res-email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border-2 border-ciro-dark bg-ciro-light font-sans font-bold text-xs tracking-wider outline-none focus:bg-white focus:border-ciro-olive"
+                      placeholder="rahul@gmail.com"
+                    />
+                    {errors.email && <span className="text-[10px] font-extrabold text-ciro-orange uppercase">{errors.email}</span>}
+                  </div>
                 </div>
 
+                {/* Guests & Vibe Row */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="res-guests" className="font-display font-extrabold text-[10px] uppercase tracking-wider">Guests</label>
@@ -226,6 +263,7 @@ export const ReservationCTA: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Date & Time Row */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="res-date" className="font-display font-extrabold text-[10px] uppercase tracking-wider">Date</label>
@@ -259,9 +297,17 @@ export const ReservationCTA: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="mt-4 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="mt-4 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  CONFIRM BOOKING
+                  {isSubmitting ? (
+                    <>
+                      <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin inline-block" />
+                      <span>DISPATCHING RESERVATION...</span>
+                    </>
+                  ) : (
+                    'CONFIRM BOOKING'
+                  )}
                 </button>
               </form>
             ) : (
@@ -273,18 +319,38 @@ export const ReservationCTA: React.FC = () => {
                   Table Booked!
                 </h3>
                 <p className="font-sans font-semibold text-xs opacity-75 mt-2 max-w-xs">
-                  Your reservation for <span className="text-ciro-olive">{formData.guests} {formData.guests === '1' ? 'Guest' : 'Guests'}</span> on <span className="text-ciro-olive">{formData.date}</span> at <span className="text-ciro-olive">{formData.time}</span> is set.
+                  Your reservation for <span className="text-ciro-olive font-bold">{formData.guests} {formData.guests === '1' ? 'Guest' : 'Guests'}</span> on <span className="text-ciro-olive font-bold">{formData.date}</span> at <span className="text-ciro-olive font-bold">{formData.time}</span> is set.
                 </p>
                 
-                <div className="mt-6 border-2 border-ciro-dark bg-ciro-light p-4 text-left text-xs font-display font-bold w-full flex flex-col gap-1">
-                  <p>NAME: {formData.name}</p>
-                  <p>CONTACT: +91 {formData.phone}</p>
-                  <p>VIBE: {formData.vibe.toUpperCase()} FOCUS</p>
+                <div className="mt-5 border-2 border-ciro-dark bg-ciro-light p-4 text-left text-xs font-display font-bold w-full flex flex-col gap-1.5">
+                  <p className="flex justify-between">
+                    <span className="text-ciro-dark/60 font-semibold">GUEST:</span>
+                    <span>{formData.name}</span>
+                  </p>
+                  <p className="flex justify-between">
+                    <span className="text-ciro-dark/60 font-semibold">CONTACT:</span>
+                    <span>+91 {formData.phone}</span>
+                  </p>
+                  {formData.email && (
+                    <p className="flex justify-between">
+                      <span className="text-ciro-dark/60 font-semibold">EMAIL:</span>
+                      <span className="lowercase font-mono">{formData.email}</span>
+                    </p>
+                  )}
+                  <p className="flex justify-between">
+                    <span className="text-ciro-dark/60 font-semibold">VIBE:</span>
+                    <span>{formData.vibe.toUpperCase()} FOCUS</span>
+                  </p>
+                </div>
+
+                <div className="mt-4 p-2.5 bg-emerald-50 border border-emerald-300 rounded text-[11px] font-mono text-emerald-800 w-full flex items-center justify-center gap-2">
+                  <span>✉️</span>
+                  <span>Notification dispatched via Resend</span>
                 </div>
 
                 <button
                   onClick={handleReset}
-                  className="mt-8 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 px-6 w-full hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer"
+                  className="mt-6 bg-[#829375] text-[#FEF7EC] font-display font-black text-xs uppercase tracking-widest border-2 border-ciro-dark py-4 px-6 w-full hover:bg-ciro-dark hover:text-ciro-cream transition-colors duration-300 cursor-pointer"
                 >
                   BOOK ANOTHER TABLE
                 </button>
